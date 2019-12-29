@@ -1,0 +1,11 @@
+H:\cs_hw\bingov4\project4\project4\obj\Debug\netcoreapp2.1\project4.csprojAssemblyReference.cache
+H:\cs_hw\bingov4\project4\project4\obj\Debug\netcoreapp2.1\project4.csproj.CoreCompileInputs.cache
+H:\cs_hw\bingov4\project4\project4\obj\Debug\netcoreapp2.1\project4.AssemblyInfoInputs.cache
+H:\cs_hw\bingov4\project4\project4\obj\Debug\netcoreapp2.1\project4.AssemblyInfo.cs
+H:\cs_hw\bingov4\project4\project4\bin\Debug\netcoreapp2.1\project4.deps.json
+H:\cs_hw\bingov4\project4\project4\bin\Debug\netcoreapp2.1\project4.runtimeconfig.json
+H:\cs_hw\bingov4\project4\project4\bin\Debug\netcoreapp2.1\project4.runtimeconfig.dev.json
+H:\cs_hw\bingov4\project4\project4\bin\Debug\netcoreapp2.1\project4.dll
+H:\cs_hw\bingov4\project4\project4\bin\Debug\netcoreapp2.1\project4.pdb
+H:\cs_hw\bingov4\project4\project4\obj\Debug\netcoreapp2.1\project4.dll
+H:\cs_hw\bingov4\project4\project4\obj\Debug\netcoreapp2.1\project4.pdb
