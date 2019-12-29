@@ -1,0 +1,154 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.IO;
+
+namespace BabbleSample
+{
+    /// Babble framework
+    /// Starter code for CS212 Babble assignment
+    public partial class MainWindow : Window
+    {
+        private string input;               // input file
+        private string[] words;             // input file broken into array of words
+        private int wordCount = 200;        // number of words to babble
+        private Dictionary<string, ArrayList> hashTable;     //make dictionary with the string value a​
+        string key;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+        
+        private void loadButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            ofd.FileName = "Sample"; // Default file name
+            ofd.DefaultExt = ".txt"; // Default file extension
+            ofd.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+            // Show open file dialog box
+            if ((bool)ofd.ShowDialog())
+            {
+                textBlock1.Text = "Loading file " + ofd.FileName + "\n";
+                input = System.IO.File.ReadAllText(ofd.FileName);        // read file
+                words = Regex.Split(input, @"\s+");                      // split into array of words
+            }
+        }
+
+        private void analyzeInput(int order)
+        { 
+            if (order > 0)                                                  //if order is greater than 0
+            {
+                MessageBox.Show("Analyzing at order: " + order);    
+                hashTable = makeHashtable();                                //create hashtable
+                display_order(hashTable);
+                                               //analyize hashtable according to unique keys and arraylist of values that follows key
+            }
+        }
+
+        private void babbleButton_Click(object sender, RoutedEventArgs e)
+        {
+            textBlock1.Text = "";                                          //resets textblock  
+            dump(hashTable);                                               //dumps the text into the textblock
+        }
+
+        private void orderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            analyzeInput(orderComboBox.SelectedIndex);
+        }
+    
+        /*makeHashtable function makes a dictionary with string and arraylist of keys and values, respectively
+         * it strings each word that comes after the "key" value to an array list ​
+         * output is a dictionary type​, namely hashtable
+         */
+        Dictionary<string, ArrayList> makeHashtable()
+        {
+            Dictionary<string, ArrayList> hashTable = new Dictionary<string, ArrayList>();
+            int uniquenumber = 0;                                        // counter for number of unique keys
+         
+                for (int i = 0; i < words.Length - 1; i++)
+                {
+                    key = words[i];
+                    if (!hashTable.ContainsKey(key))             // adds key if hashtable does not already contain it
+                        hashTable.Add(key, new ArrayList());
+                    uniquenumber += 1;
+                    if (hashTable.ContainsKey(key))
+                        hashTable[key].Add(words[i + 1]);          // adds the following word to key's ArrayList
+                }
+            textBlock1.Text += "The number of unique keys for selected order is: " + uniquenumber + "\n";
+            return hashTable;
+
+            /*
+             * if order is greater or equal to 2
+             *      create a string of array with ther order n size
+             *      if key is not in hashtable
+             *          increment the unique set of n series of keys
+             *          then append each word and connect it with space or "-" to the key of array.
+             *      if key is in hashtable,
+             *          Then add the list of words that follow the nth sequence of key words.
+             *          
+             */
+        }
+
+        /*
+        * displayorder takes in a hashtable​
+        * this displays the number of unique words in the text file​
+        * and the arrays of words whch follows each unique key word​
+        * output is string, which is loaded unto the textbox​
+        */
+        void display_order(Dictionary<string, ArrayList> hashTable)
+        {
+            textBlock1.Text += "analyzing..." + "\n";
+            foreach (KeyValuePair<string, ArrayList> values in hashTable)
+            {
+                textBlock1.Text += values.Key + "->";
+                foreach (string s in values.Value)
+                {
+                    textBlock1.Text += s + ",";
+                }
+                textBlock1.Text += "\n";
+            }
+        }
+
+        /*dump function takes in a hashtable, with key and values, string and arraylist, respectively
+        * it begins with the initial word, ties it to one random index number in the ArrayList
+        * and writes it afte the key, and goes through the loop until it shows 200 word count
+        * output is void, but prints babble in the textBlock1
+        */
+        void dump(Dictionary<string, ArrayList> hashTable)
+        {
+            int i = 1;
+            key = words[0];                                         
+            while (!hashTable.ContainsKey(key))             //when coming across the last word in the text, begin with the initial word in text
+            {
+                key = key + " " + words[i];                 //start with the first word again
+                i++;
+            }
+            string firstkey = key;                          // save first key
+            textBlock1.Text += firstkey;                    //begin with the initial key
+            for (int ii = 0; ii <= wordCount; ii++)
+            {
+                Random random = new Random();
+                ArrayList keyvalue = hashTable[key];
+                int index = random.Next(0, hashTable[key].Count - 1);          // generates a random number from 0 to the max number of words in arraylist                                                  // stores key's Array List in a variable
+                string next = keyvalue[index].ToString();                      // stores and accesses the word at the randomly generated index of Array List
+                textBlock1.Text += " " + next; 
+                key += " " + next;                                             // adds the next word to key itself
+                key = key.Substring(key.IndexOf(" ") + 1);                     // removes the former word, and goes through loop again
+            }
+        }
+    }
+}
