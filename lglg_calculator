@@ -1,0 +1,53 @@
+/*********************************************************************
+* C# lglg number calculator
+*
+* Sinai Park, 9/2019
+*
+*********************************************************************/
+using System;
+
+namespace lglgApplication
+{
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Fantastic Log Log Calculator!");
+        while (true)
+        {
+            Console.Write("\nEnter N: ");
+
+            try
+            {
+                double n = double.Parse(Console.ReadLine());
+                Console.WriteLine("lglg({0}) = {1}.", n, lglg(n));
+
+                if (n < 0) //catch negative numbers
+                {
+                    Console.WriteLine("Please enter a non-negative number");
+                } 
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please enter an integer");   //catch non-numeric exception
+            }
+        }
+    }
+    static double lglg(double d)     //program for lglg calculator
+    {
+        int l = 0;      //store the first lg in variable l
+        int ll = 0;     //store the second lg in variable ll
+        while (d >= 2)
+        {
+            d /= 2;
+            l++;        //increment l with each loop
+        }
+        while (l > 1) { 
+            l /= 2;
+            ll++;       //increment ll with each loop
+        }
+        return ll;      //return lglg number as answer
+        }
+    }
+}
+
