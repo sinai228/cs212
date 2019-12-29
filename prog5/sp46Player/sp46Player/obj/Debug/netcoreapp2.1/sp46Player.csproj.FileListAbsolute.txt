@@ -1,0 +1,11 @@
+H:\cs_hw\prog5\sp46Player\sp46Player\obj\Debug\netcoreapp2.1\sp46Player.csprojAssemblyReference.cache
+H:\cs_hw\prog5\sp46Player\sp46Player\obj\Debug\netcoreapp2.1\sp46Player.csproj.CoreCompileInputs.cache
+H:\cs_hw\prog5\sp46Player\sp46Player\obj\Debug\netcoreapp2.1\sp46Player.AssemblyInfoInputs.cache
+H:\cs_hw\prog5\sp46Player\sp46Player\obj\Debug\netcoreapp2.1\sp46Player.AssemblyInfo.cs
+H:\cs_hw\prog5\sp46Player\sp46Player\bin\Debug\netcoreapp2.1\sp46Player.deps.json
+H:\cs_hw\prog5\sp46Player\sp46Player\bin\Debug\netcoreapp2.1\sp46Player.runtimeconfig.json
+H:\cs_hw\prog5\sp46Player\sp46Player\bin\Debug\netcoreapp2.1\sp46Player.runtimeconfig.dev.json
+H:\cs_hw\prog5\sp46Player\sp46Player\bin\Debug\netcoreapp2.1\sp46Player.dll
+H:\cs_hw\prog5\sp46Player\sp46Player\bin\Debug\netcoreapp2.1\sp46Player.pdb
+H:\cs_hw\prog5\sp46Player\sp46Player\obj\Debug\netcoreapp2.1\sp46Player.dll
+H:\cs_hw\prog5\sp46Player\sp46Player\obj\Debug\netcoreapp2.1\sp46Player.pdb
