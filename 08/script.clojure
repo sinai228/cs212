@@ -1,147 +1,225 @@
-Script started on 2020-04-10 04:33:50-0400
-]0;sp46@gold09: ~/214/labs/08/clojure[01;32msp46@gold09[00m:[01;34m~/214/labs/08/clojure[00m$ cat /src    src/Name.clj          nameTester.clj src/Name.clj
-;; nameTester.clj tests a Clojure Name type,
-;;  stored in Name.clj (in the src directory).
-;;
-;; Output: the results of testing the Name functions.
-;;
-;; Usage: clojure -m nameTester
-;;
-;; Begun by: Prof. Adams, CS 214 at Calvin College.
-;; Completed by: Sinai Park
-;; Date: April 10 2020
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(ns nameTester)
-
-;module import directory 
-(load "Name")
-;(load-file "src/Name.clj")
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; A simple driver to test our Name functions. 
-;; Output: the results of testing our Name functions.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn -main []
-  (let
-    [                                          ; 3 ways to construct an object:
-      name1 (make-Name "John" "Paul" "Jones")  ; -using our "make-" constructor
-      name2 (->Name "Jane" "Penelope" "Jones") ; -invoking constructor directly
-                                               ; -mapping field-names to values
-      name3 (map->Name {:lastName "Jones" :firstName "Jinx" :middleName "Joy"})
-    ]
-    ;; ----- SECTION 1 -----
-    (println)
-    (print name1) (println)
-    (assert (= (getFirst name1) "John") "getFirst(1) failed")
-    (assert (= (getMiddle name1) "Paul") "getMiddle(1) failed")
-    (assert (= (getLast name1) "Jones") "getLast(1) failed")
-    (assert (= (toString name1) "John Paul Jones") "toString(1) failed")
-    (printName name1) (println)
-    ;; ----- SECTION 2 -----
-    (println)
-    (print name2) (println)
-    (assert (= (getFirst name2) "Jane") "getFirst(2) failed")
-    (assert (= (getMiddle name2) "Penelope") "getMiddle(2) failed")
-    (assert (= (getLast name2) "Jones") "getLast(2) failed")
-    (assert (= (toString name2) "Jane Penelope Jones") "toString(2) failed")
-    (printName name2) (println)
-    ;; ----- SECTION 3 -----
-    (println)
-    (print name3) (println)
-    (assert (= (getFirst name3) "Jinx") "getFirst(3) failed")
-    (assert (= (getMiddle name3) "Joy") "getMiddle(3) failed")
-    (assert (= (getLast name3) "Jones") "getLast(3) failed")
-    (assert (= (toString name3) "Jinx Joy Jones") "toString(3) failed")
-    (printName name3) (println)
-
-    (println "\nAll tests passed!\n")
-  )
-)
-
-
-;; Name.clj is a module for our 'Name' type-abstraction.
+Script started on 2020-04-16 02:48:04-0400
+]0;sp46@gold06: ~/214/projects/08/clojure[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure[00m$ cd src
+]0;sp46@gold06: ~/214/projects/08/clojure/src[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure/src[00m$ ls
+Temp.clj  tempTester.clj
+]0;sp46@gold06: ~/214/projects/08/clojure/src[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure/src[00m$ cat Temp.clj
+;; Temp.clj is a module for our 'Temp' type-abstraction.
 ;;
 ;; Begun by: Prof. Adams, for CS 214 at Calvin College.
 ;; Completed by: Sinai Park (sp46)
-;; Date: April 10 2020
+;; Date: April 15 2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
-;; Create a record/struct type named Name
-(defrecord Name [firstName middleName lastName])
+;; Create a record/struct type named Temp
+(defrecord Temp [degree, scale])
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; make-Name constructs a Name object from three strings. 
-;; Receive: firstN, middleN and lastN, three strings.
-;; Return: the Name (firstN middleN lastN). 
+;; make-Temp constructs a Temp object from 
+;; degree, a string and scale, a char 
+;; Receive: degree and scale
+;; Return: the Temp (degree and scale). 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn make-Name [firstN middleN lastN]
-  (->Name firstN middleN lastN)
+(defn make-Temp [degree scale]
+  (->Temp degree scale)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; getFirst extracts the first name of a name object.
-;; Receive: aName, a Name.
-;; Return: the firstName string in aName.
+;; getDegrees extracts the degrees of a temp object.
+;; Receive: aTemp, a Temp
+;; Return: the degrees double in aTemp.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn getFirst [aName]
-  (:firstName aName)
+(defn getDegree [aTemp]
+  (:degree aTemp)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; getMiddle extracts the middle name of a name object.
-;; Receive: aName, a Name. 
-;; Return: the middleName string in aName.
+;; getScale extracts the scale of a temp object.
+;; Receive: aTemp, a Temp
+;; Return: the scale char in aTemp.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn getMiddle [aName]
-  (:middleName aName)
+(defn getScale [aTemp]
+  (:scale aTemp)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; getLast extracts the last name of a name object.
-;; Receive: aName, a Name. 
-;; Return: the lastName string in aName.
+;; toFarenheit extracts the degrees of a temp object.
+;; Receive: aTemp, a Temp
+;; Return: the degrees in Fahrenheit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn getLast [aName]
-  (:lastName aName)
+(defn toFahrenheit [aTemp]
+  (if (or (=(:scale aTemp) "C") (=(:scale aTemp) "c"))
+    (do
+      (let [degree_val (+ ( * (:degree aTemp) (/ 9.0 5.0)) 32.0) ]
+      (let [scale_char ("F")]
+      (->Temp degree_val scale_char)
+  (if (or (=(:scale aTemp) "K") (=(:scale aTemp) "k"))
+    (do
+      (let [degree_val (- ( * (getDegree aTemp) (/ 9.0 5.0)) 459.67) ]
+      (let [scale_char ("F")]
+      (->Temp degree_val scale_char)))))))))
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; toString converts a Name to a string
-;; Receive: aName, a Name. 
-;; Return: a string containing firstName, middleName, lastName,
-;;           separated by spaces. 
+;; toCelcius extracts the scale of a temp object.
+;; Receive: aTemp, a Temp. 
+;; Return: the degrees in Celsius
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn toString [aName]
-  (str (getFirst aName) " " (getMiddle aName) " " (getLast aName))
+(defn toCelsius [aTemp]
+  (:scales aTemp)
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; printName displays a name object. 
-;; Receive: aName, a Name, 
-;; Output: the string representation of aName. 
+;; toKelvin extracts the scale of a temp object.
+;; Receive: aTemp, a Temp
+;; Return: the degrees in Kelvin
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defn printName [aName]
-  (print (toString aName) )
+(defn toKelvin [aTemp]
+  (:scales aTemp)
 )
-]0;sp46@gold09: ~/214/labs/08/clojure[01;32msp46@gold09[00m:[01;34m~/214/labs/08/clojure[00m$ clojure -m nam              make
-clojure -m nameTester
 
-#nameTester.Name{:firstName John, :middleName Paul, :lastName Jones}
-John Paul Jones
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; readTemp() creates a temp from user input. 
+;;; Receive: aTemp, a Temp 
+;;; Return: none 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn readTemp[^Temp aTemp]
+  (print "Please enter the degree name: ") (flush)
+  (let
+    [degree (read-line)]
+      (print "Please enter the scale: ") (flush)
+      (let
+        [ scale (read-line)]
+          (->Temp degree scale)
+          
+      )
+  )
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; printTemp displays a temp object. 
+;; Receive: aTemp, a Temp, 
+;; Output: the string representation of aTemp. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn printTemp[aTemp]
+  (print (getDegree aTemp) "" (getScale aTemp))
+)
 
-#nameTester.Name{:firstName Jane, :middleName Penelope, :lastName Jones}
-Jane Penelope Jones
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setFirst() changes the first name of a Name object.
+;;; Receive: aName, a Name.
+;;; Return: the changed firstName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-#nameTester.Name{:firstName Jinx, :middleName Joy, :lastName Jones}
-Jinx Joy Jones
+(defn raise[aTemp add_degree]
+  (->Temp (+ (:degree aTemp) add_degree) (:scale aTemp) )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setMiddle() changes the middle name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the middleName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn lower[aTemp sub_degree]
+  (->Temp (- (:degree aTemp) sub_degree) (:scale aTemp) )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setLast() changes the last name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the lastName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn equals[aTemp comp_temp]
+  (:degree aTemp)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; less_than() returns a full name in L-F-M order. 
+;;; Receive: aName, a Name. 
+;;; Return: lastName, firstName, middleName,
+;;;           separated by spaces. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn less_than[aTemp comp_temp]
+  (:degree aTemp)
+)]0;sp46@gold06: ~/214/projects/08/clojure/src[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure/src[00m$ cat TempTester.clj                  cat tempTester.clj
+;;;; tempTester.clj tests a clojure Temp type.
+;;;;
+;;;; Output: results of testing Temp functions.
+;;;;
+;;;; Usage: clojure -m nameTester
+;;;;
+;;;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;;;; Completed by: Sinai Park (sp46)
+;;;; Date: April 1 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns tempTester)   ; program name
+
+(load "Temp")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; A simple driver to test our Temp functions. 
+;;; Output: the result of testing our Temp functions.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let
+    [                                          ; 3 ways to construct an object:
+       start_temp (make-Temp 30.0 "F")  ; -using our "make-" constructor
+       limit_temp (->Temp 30.0 "F" ) ; -invoking constructor directly                                                   
+       name3 (map->Temp {:degrees 30.0 :scale "Jinx"}) ; -mapping field-names to values; 
+    ]
+    (printTemp start_temp) (println)
+    (println "Starting Temperature ")
+    (let 
+      [start_temp (readTemp start_temp)]
+    (println "Limiting Temperature ") 
+    (let 
+      [limit_temp (readTemp limit_temp)]
+    (println "Enter the increment number: ") 
+    (let 
+      [increment (read)]
+
+
+      ;First print out the Fahrenheit degrees
+      (toFahrenheit start_temp)
+      (printTemp start_temp)
+      (print "\t")
+  
+      ;Second print out the Celsius degrees
+      (toCelsius start_temp)
+      (printTemp start_temp)
+      (print "\t")
+  
+      ;Third print out the Kelvin degrees
+      (toKelvin start_temp)
+      (printTemp start_temp)
+      (println "")
+
+    ))) ;three let definitions
+    (println "\nAll tests passed!")
+
+  )
+)
+
+]0;sp46@gold06: ~/214/projects/08/clojure/src[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure/src[00m$ cd -
+/home/sp46/214/projects/08/clojure
+]0;sp46@gold06: ~/214/projects/08/clojure[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure[00m$ clojure -m tempTester
+30.0  F
+Starting Temperature 
+Please enter the degree name: 0
+Please enter the scale: f
+Limiting Temperature 
+Please enter the degree name: 100
+Please enter the scale: c
+Enter the increment number: 
+2.5
+0  f	0  f	0  f
 
 All tests passed!
+]0;sp46@gold06: ~/214/projects/08/clojure[01;32msp46@gold06[00m:[01;34m~/214/projects/08/clojure[00m$ exit
 
-]0;sp46@gold09: ~/214/labs/08/clojure[01;32msp46@gold09[00m:[01;34m~/214/labs/08/clojure[00m$ exit
-
-Script done on 2020-04-10 04:34:34-0400
+Script done on 2020-04-16 02:48:50-0400

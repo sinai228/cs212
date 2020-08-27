@@ -1,57 +1,67 @@
-/* Average.java is a driver for method avg().
+/* Array.java is a driver for method printarray().
  *
  * Started by: Prof. Adams, for CS 214 at Calvin College
  *
  * Student Name: Sinai Park(sp46)
- * Date: March 12 2020
+ * Date: March 18 2020
  *
+ * Prompts the user for a input size of an array
+ * prints the array, and 
  * Precondition: theArray, is an array of double values.
  * Output: the average of the numbers in theArray.
  ***************************************************************/
 
 import java.io.*;
+import java.util.Scanner;
 
-public class Average
+public class Array
 {
   public static void main(String[] args) {
 
-      //declaring array0 and array1
-      double[] array0 = null;
-      double[] array1 = new double[]{9.0, 8.0, 7.0, 6.0};
+      
+  // Create a new Scanner for user input
+	Scanner keyboard = new Scanner(System.in);
+	System.out.println("Enter the size of the array: ");
+	
+	// Read in the size of the array from the user
+	int size = keyboard.nextInt();
 
+	// Create an array with the user input size
+	double[] theArray = new double[size];
 
-      // output the average of the values in the arrays
-      System.out.println("The first average is " + avg(array0));
-      System.out.println("The second average is " + avg(array1));
+	// Call readArray to fill the array, printArray to output the array
+	readArray(theArray, size, keyboard);
+	printArray(theArray, size, keyboard);
   }
   
 
-  /* sum() is a method that computes the sum of all the values
+  /* printArray() is a method that prints all the values in the array, with a new line
    * in an array of doubles.
    * Receive: anArray, an array of doubles.
-   * Return: the sum of the values in anArray.
+   * Return: the list of the values in anArray.
    ************************************************************/
-  public static double sum(double[] theArray)
+  public static double printArray(double[] theArray, int size, Scanner keyboard)
   {
-    //resulting sum
-    double total = 0.0;
-    for (int i = 0; i < theArray.length; i++){
-      total += theArray[i];
+    System.out.println("The values inside the array are: ");
+    //resulting array values
+    for (int i = 0; i < size; i++){
+      System.out.println(theArray[i]);
     }
-    return total;
   }
 
-  /* avg() is a method that computes the average of the values
+  /* readArray() is a method that fills the values inside the array with given input values
    * in an array.
    * Receive: anArray, an array of doubles.
-   * Return: the average of the values in anArray.
+   * Return: void, or anArray with filled-in values
    **************************************************************/
-  public static double avg(double anArray[])
+  public static double readArray(double[] anArray, int size, Scanner keyboard)
   {
-    if (anArray == null || anArray.length <= 0)   //check if array is null
-      return 0.0;
-    else 
-      return sum(anArray) / anArray.length;   //divide the sum by the number of things in the array
+    System.out.println("Please enter " + size + " values for the array: ");
+
+    // Fill in values of the theArray with given doubles
+    for (int i = 0; i < size; i++) {
+      theArray[i] = keyboard.nextDouble();  
+    }
   }
 }
 

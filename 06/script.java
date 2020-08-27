@@ -1,66 +1,107 @@
-Script started on 2020-03-12 21:14:59-0400
-]0;sp46@gold16: ~/214/labs/06[01;32msp46@gold16[00m:[01;34m~/214/labs/06[00m$ cat Average.java
-/* Average.java is a driver for method avg().
+Script started on 2020-03-18 19:29:26-0400
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.java
+/* Array.java is a driver for method printarray().
  *
  * Started by: Prof. Adams, for CS 214 at Calvin College
  *
  * Student Name: Sinai Park(sp46)
- * Date: March 12 2020
+ * Date: March 18 2020
  *
+ * Prompts the user for a input size of an array
+ * prints the array, and 
  * Precondition: theArray, is an array of double values.
  * Output: the average of the numbers in theArray.
  ***************************************************************/
 
 import java.io.*;
+import java.util.Scanner;
 
-public class Average
+public class Array
 {
   public static void main(String[] args) {
 
-      //declaring array0 and array1
-      double[] array0 = null;
-      double[] array1 = new double[]{9.0, 8.0, 7.0, 6.0};
+      
+  // Create a new Scanner for user input
+	Scanner keyboard = new Scanner(System.in);
+	System.out.println("Enter the size of the array: ");
+	
+	// Read in the size of the array from the user
+	int size = keyboard.nextInt();
 
+	// Create an array with the user input size
+	double[] anArray = new double[size];
 
-      // output the average of the values in the arrays
-      System.out.println("The first average is " + avg(array0));
-      System.out.println("The second average is " + avg(array1));
+	// Call readArray to fill the array, printArray to output the array
+	readArray(anArray, size, keyboard);
+	printArray(anArray, size, keyboard);
   }
   
 
-  /* sum() is a method that computes the sum of all the values
+  /* printArray() is a method that prints all the values in the array, with a new line
    * in an array of doubles.
    * Receive: anArray, an array of doubles.
-   * Return: the sum of the values in anArray.
+   * Return: the list of the values in anArray.
    ************************************************************/
-  public static double sum(double[] theArray)
+  public static void printArray(double[] anArray, int size, Scanner keyboard)
   {
-    //resulting sum
-    double total = 0.0;
-    for (int i = 0; i < theArray.length; i++){
-      total += theArray[i];
+    System.out.println("The values inside the array are: ");
+    //resulting array values
+    for (int i = 0; i < size; i++){
+      System.out.println(anArray[i]);
     }
-    return total;
   }
 
-  /* avg() is a method that computes the average of the values
+  /* readArray() is a method that fills the values inside the array with given input values
    * in an array.
    * Receive: anArray, an array of doubles.
-   * Return: the average of the values in anArray.
+   * Return: void, or anArray with filled-in values
    **************************************************************/
-  public static double avg(double anArray[])
+  public static void readArray(double[] anArray, int size, Scanner keyboard)
   {
-    if (anArray == null || anArray.length <= 0)   //check if array is null
-      return 0.0;
-    else 
-      return sum(anArray) / anArray.length;   //divide the sum by the number of things in the array
+    System.out.println("Please enter " + size + " values for the array: ");
+
+    // Fill in values of the theArray with given doubles
+    for (int i = 0; i < size; i++) {
+      anArray[i] = keyboard.nextDouble();  
+    }
   }
 }
 
-]0;sp46@gold16: ~/214/labs/06[01;32msp46@gold16[00m:[01;34m~/214/labs/06[00m$ cat Average.java[4Pjava Averagecat Average.java[Kjavac -deprecation Average.java
-]0;sp46@gold16: ~/214/labs/06[01;32msp46@gold16[00m:[01;34m~/214/labs/06[00m$ java Average
-The first average is 0.0
-The second average is 7.5
-]0;sp46@gold16: ~/214/labs/06[01;32msp46@gold16[00m:[01;34m~/214/labs/06[00m$ exit
 
-Script done on 2020-03-12 21:15:41-0400
+
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.javascript.java script.ada script.clojure scriptt.ruby > lab06-results[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ [29Pscript script.ruby
+[K[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ script script.ruby[3Pruby average.rbls[Kruby average.rbscript script.rubycat script.java script.ada script.clojure scriptt.ruby > lab06-results[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.java[K
+[K[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.java[Kjavac d -deprecation Array.java
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ java Array
+Enter the size of the array: 
+5 4
+Please enter 4 values for the array: 
+9
+8
+7
+6
+The values inside the array are: 
+9.0
+8.0
+7.0
+6.0
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ 3 java Arrayc -deprecation Array.java
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ javac -deprecation Array.java Array[Kc -deprecation Array.java Array[K
+Enter the size of the array: 
+0
+Please enter 0 values for the array: 
+The values inside the array are: 
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ java Array
+Enter the size of the array: 
+3
+Please enter 3 values for the array: 
+6236
+8625
+0005732
+The values inside the array are: 
+6236.0
+8625.0
+5732.0
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ exit
+
+Script done on 2020-03-18 19:30:26-0400

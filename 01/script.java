@@ -1,101 +1,94 @@
-Script started on 2020-02-06 13:09:22-0500
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ cat CircleArea.java
-/* CircleArea.java computes the area of a circle.
+Script started on 2020-02-06 17:00:46-0500
+
+/* RectangleArea.java computes the area of a rectangle.
  *
- * Input: The radius of the circle.
- * Precondition: The radius is a positive number.
- * Output: The area of the circle.
+ * Input: The width and height of the rectangle.
+ * Precondition: Both width and height are a positive numbers.
+ * Output: The area of the rectangle.
  *
- * Begun by: Dr. Adams, for CS 214, at Calvin College.
- * Completed by: Sinai Park(sp46)
+ * Programmed by: Sinai Park(sp46)
  * Date:Feb 6 2020
  **********************************************************/
 
 
 import java.util.Scanner;  // include class for Scanner
 
-public class CircleArea {
+public class RectangleArea {
 
-     /* function circleArea() computes a circle's area, given its radius.
-      * Parameter: r, a double
-      * Precondition: r is not negative.
-      * Returns: the area of the circle
+     /* function rectangleArea() computes a rectangle's area, given its width and height.
+      * Parameter: w, a double, h, a double
+      * Precondition: w and h are not negative.
+      * Returns: the area of the rectangle
       */
-     public static double circleArea(double r) {
-        return Math.PI * r * r;               // return an expression
-     } // circleArea method
+     public static double rectangleArea(double w, double h) {
+        return w * h;               // return an expression
+     } // rectangleArea method
 	
   // main program
   public static void main(String[] args) {
       // prompt for radius
-      System.out.println("\n\nTo compute the area of a circle,");
-      System.out.print(" enter its radius: ");
+      System.out.println("\n\nTo compute the area of a rectangle,");
+      System.out.print(" enter its width: ");
 
       // Create a connection named keyboard to standard in
       Scanner keyboard = new Scanner(System.in);
 
       //Get the number from the user
-      double radius = keyboard.nextDouble();
+      double width = keyboard.nextDouble();
+
+      System.out.print(" enter its height: ");
+
+       //Get the number from the user
+      double height = keyboard.nextDouble();
 
       // output area
-      System.out.println("\nThe area is " + circleArea(radius) + "\n");
-      System.out.printf("The area is %f\n\n", circleArea(radius));
-      System.out.printf("The area is %.15f\n\n", circleArea(radius));
+      System.out.println("\nThe area is " + rectangleArea(width, height) + "\n");
+      System.out.printf("The area is %f\n\n", rectangleArea(width, height));
+      System.out.printf("The area is %.15f\n\n", rectangleArea(width, height));
   } // main method
 
-} // class CircleArea
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ java  c -deprecation CirC cleArea.java
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ java CirclaArea
-Error: Could not find or load main class CirclaArea
-Caused by: java.lang.ClassNotFoundException: CirclaArea
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ java CircleArea
+} // class RectangleArea
+
+j]0;sp46@gold12: ~/214/projects/01[01;32msp46@gold12[00m:[01;34m~/214/projects/01[00m$ java C[KRectangleArea.[K[Ka
 
 
-To compute the area of a circle,
- enter its radius: 1
+To compute the area of a rectangle,
+ enter its width: 3
+ enter its height: 6
 
-The area is 3.141592653589793
+The area is 18.0
 
-The area is 3.141593
+The area is 18.000000
 
-The area is 3.141592653589793
+The area is 18.000000000000000
 
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ java CircleArea
-
-
-To compute the area of a circle,
- enter its radius: 2
-
-The area is 12.566370614359172
-
-The area is 12.566371
-
-The area is 12.566370614359172
-
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ java CircleArea
+]0;sp46@gold12: ~/214/projects/01[01;32msp46@gold12[00m:[01;34m~/214/projects/01[00m$ java RectangleArea
 
 
-To compute the area of a circle,
- enter its radius: 2.5
+To compute the area of a rectangle,
+ enter its width: 12.3
+ enter its height: 45.6
 
-The area is 19.634954084936208
+The area is 560.88
 
-The area is 19.634954
+The area is 560.880000
 
-The area is 19.634954084936208
-
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ java CircleArea
+The area is 560.880000000000000
 
 
-To compute the area of a circle,
- enter its radius: 4.99999
+]0;sp46@gold12: ~/214/projects/01[01;32msp46@gold12[00m:[01;34m~/214/projects/01[00m$ 9.99[Kjava RectangleArea
 
-The area is 78.53950218079365
 
-The area is 78.539502
+To compute the area of a rectangle,
+ enter its width: 9.9
+ enter its height: 9.999
 
-The area is 78.539502180793650
+The area is 98.99010000000001
 
-]0;sp46@gold23: ~/214/labs/01[01;32msp46@gold23[00m:[01;34m~/214/labs/01[00m$ exit
+The area is 98.990100
 
-Script done on 2020-02-06 13:10:05-0500
+The area is 98.990100000000010
+
+]0;sp46@gold12: ~/214/projects/01[01;32msp46@gold12[00m:[01;34m~/214/projects/01[00m$ exit
+
+Script done on 2020-02-06 17:02:37-0500

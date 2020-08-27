@@ -1,0 +1,706 @@
+Script started on 2020-05-12 11:38:58-0400
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ cat NameTester.java
+/* NameTester.java is a 'driver' to test class Name.
+ * Begun by: Prof. Adams, for CS 214 at Calvin College.
+ * Student: Sinai Park(sp46)
+ * Date: April 1 2020
+ ************************************************************/
+
+ import java.io.*;
+ import java.util.Scanner;
+
+public class NameTester  
+{
+  public static void main(String[] args)
+  {
+      Name aName = new Name("John", "Paul", "Jones");
+
+      assert aName.getFirst().equals("John") ;
+      assert aName.getMiddle().equals("Paul") ;
+      assert aName.getLast().equals("Jones") ;
+     
+      System.out.println(aName);
+      assert aName.toString().equals("John Paul Jones");
+      assert aName.lfmi().equals("Jones John Paul");  //testing lfmi function
+
+      //testing setFirst, setMiddle, setLast
+      aName.setFirst("Michael") ;
+      aName.setMiddle("Moses") ;
+      aName.setLast("Smith");
+      assert aName.getFirst().equals("Michael") ;
+      assert aName.getMiddle().equals("Moses") ;
+      assert aName.getLast().equals("Smith") ;
+
+      System.out.println(aName);
+      assert aName.toString().equals("Michael Moses Smith");
+      assert aName.lfmi().equals("Smith Michael Moses");    //testing lfmi function
+
+      //testing readName()
+      Name test_Name = new Name("John", "Paul", "Jones");
+      Scanner keyboard = new Scanner(System.in);
+
+      test_Name.readName(keyboard);
+      System.out.println(test_Name.toString());
+
+      System.out.println("All tests passed!");
+  }
+}
+
+// Replace this line with the declaration of class Name...
+
+class Name
+   {
+
+      private String myFirst,
+                     myMiddle,
+                     myLast;
+
+     /***************************************************
+     * Name constructs a name from three strings.      *
+     * Receive: first, middle and last, three strings. *
+     * Return: the triplet (first middle last).        *
+     ***************************************************/
+      public Name(String first, String middle, String last)
+      {
+        myFirst = first;
+        myMiddle = middle;
+        myLast = last;
+      }
+      //getFirst() returns the first name of the Name object          
+      public String getFirst()
+      {
+         return myFirst;
+      }
+      //getMiddle() returns the middle name of the Name object
+      public String getMiddle()
+      {
+         return myMiddle;
+      }
+      //getLast() returns the last name of the Name object
+      public String getLast()
+      {
+         return myLast;
+      }
+      //toString() displays the Name object in string
+      public String toString()
+      {
+         return myFirst + ' ' + myMiddle + ' ' + myLast;
+      }
+      //print() prints out the string object to the console
+      public void print() {
+         System.out.println( toString() );
+      }
+
+
+
+
+      //setFirst() returns the first name of the Name object          
+      public void setFirst(String newFirst)
+      {
+         myFirst = newFirst;
+      
+      }
+      //setMiddle() returns the middle name of the Name object
+      public void setMiddle(String newMiddle)
+      {
+         myMiddle = newMiddle;
+      }
+      //setLast() returns the last name of the Name object
+      public void setLast(String newLast)
+      {
+         myLast = newLast;
+      }
+      //lfmi() displays the Name object in order of last, first, and middle
+      public String lfmi()
+      {
+         return myLast + ' ' + myFirst + ' ' + myMiddle.charAt(0) ;
+      }
+
+      //readName() uses user input to receive input from user for myFirst, myMiddle, and myLast
+      public void readName(Scanner keyboard)
+      {
+         System.out.println("Please enter the first name");
+         myFirst = keyboard.next();
+          
+         System.out.println("Please enter the middle name");
+         myMiddle = keyboard.next();
+
+         System.out.println("Please enter the last name");
+         myLast = keyboard.next();
+      }
+
+
+      //Entering make clean made the files Name.class and NameTester.class to erase from the lab directory
+      //but entering the make java command made these two files complie and show up again
+
+};
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ javac -deprecation NameTester.java
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ java NameTester
+John Paul Jones
+Michael Moses Smith
+Please enter the first name
+Mint eral
+Please enter the middle name
+Water
+Please enter the last name
+Bottle
+Mineral Water Bottle
+All tests passed!
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ exit
+
+Script done on 2020-05-12 11:39:41-0400
+Script started on 2020-05-12 11:47:25-0400
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ gnatmake name_tester.adb
+gnatmake: "name_tester" up to date.
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ ./name_e tester             cat N name_tester.adb
+-- namer.adb "test-drives" the Name type.
+-- Begun by: Prof. Adams, CS 214 at Calvin College.
+-- Completed by: Sinai Park (sp46)
+-- Date: March 31 2020
+----------------------------------------------
+
+with Ada.Text_IO; use Ada.Text_IO;
+
+procedure name_tester is
+
+  -- replace this line with the definition of NAME_SIZE
+  NAME_SIZE : constant := 8;
+
+  -- replace this line with the definition of Name
+  type name is 
+    record 
+      MyFirst, MyMiddle, MyLast : String( 1..NAME_SIZE );
+    end record;
+
+  aName : Name ;
+
+   -- strings for readName procedure
+   charsRead : Natural;
+   first, middle, last : String( 1..NAME_SIZE );
+
+  ----------------------------------------------
+  -- Init initializes a Name variable          -
+  -- Receive: theName, the Name variable;      -
+  --          First, the first name;           -
+  --          Middle, the middle name;         -
+  --          Last, the last name.             -
+  -- Return: theName, its fields set to First, -
+  --               Middle, and Last.           -
+  ----------------------------------------------
+
+  procedure Init(TheName: out Name;
+                 First, Middle, Last : in String) is
+
+  begin
+    TheName.MyFirst := First;
+    TheName.MyMiddle := Middle;
+    TheName.MyLast := Last;
+  end Init;
+
+
+  ----------------------------------------------
+  -- getFirst(Name) retrieves Name.myFirst        -
+  -- Receive: theName, a Name.                 -
+  -- PRE: theName has been initialized.        -
+  -- Return: theName.myFirst.                  -
+  ----------------------------------------------
+
+  function getFirst(TheName : in Name) return String is
+   begin
+      return TheName.MyFirst;
+   end getFirst;
+
+
+  ----------------------------------------------
+  -- getMiddle(Name) retrieves Name.myMiddle        -
+  -- Receive: theName, a Name.                 -
+  -- PRE: theName has been initialized.        -
+  -- Return: theName.myMiddle.                  -
+  ----------------------------------------------
+  function getMiddle(TheName : in Name) return String is
+   begin
+      return TheName.myMiddle;
+   end getMiddle;
+
+    ----------------------------------------------
+  -- getLast(Name) retrieves Name.myLast        -
+  -- Receive: theName, a Name.                 -
+  -- PRE: theName has been initialized.        -
+  -- Return: theName.myLast.                  -
+  ----------------------------------------------
+  function getLast(TheName : in Name) return String is
+   begin
+      return TheName.myLast;
+   end getLast;
+
+  -----------------------------------------------
+  -- getFullName(Name) retrieves Name as a String  -
+  -- Receive: theName, a Name.                  -
+  -- PRE: theName has been initialized.         -
+  -- Return: a String representation of theName -
+  -----------------------------------------------
+
+  function getFullName(TheName : in Name) return String is
+   begin
+      return TheName.myFirst & " " & TheName.myMiddle & " " & TheName.myLast;
+   end getFullName;
+
+  ----------------------------------------------
+  -- Put(Name) displays a Name value.          -
+  -- PRE: theName has been initialized.        -
+  -- Receive: theName, a Name.                 -
+  -- Output: theName, to the screen.           -
+  ----------------------------------------------
+   
+   procedure Put(TheName: in Name) is      --parameter flows in but not out, so use in mode
+   begin
+      Put( TheName.MyFirst & " " & TheName.MyMiddle & " " & TheName.MyLast );
+   end Put;
+
+
+
+
+
+----------------------------------------------
+  -- setFirst(Name) changes Name.myFirst        -
+  -- Receive: theName, a Name, NewFirst, a String                 -
+  -- PRE: theName has been initialized.        -
+  -- Return: void                 -
+  ----------------------------------------------
+
+  procedure setFirst(TheName: out Name; NewFirst : in String) is
+   begin
+      TheName.MyFirst := NewFirst;
+   end setFirst;
+
+
+  ----------------------------------------------
+  -- setMiddle(Name) changes Name.myMiddle        -
+  -- Receive: theName, a Name. NewMiddle, a String                 -
+  -- PRE: theName has been initialized.        -
+  -- Return: void                  -
+  ----------------------------------------------
+  procedure setMiddle(TheName: out Name; NewMiddle : in String) is
+   begin
+      TheName.MyMiddle := NewMiddle;
+   end setMiddle;
+
+  ----------------------------------------------
+  -- setLast(Name) changes Name.myLast        -
+  -- Receive: theName, a Name. NewLast, a String                 -
+  -- PRE: theName has been initialized.        -
+  -- Return: void                  -
+  ----------------------------------------------
+  procedure setLast(TheName: out Name; NewLast : in String) is
+   begin
+      TheName.MyLast := NewLast;
+   end setLast;
+
+  -----------------------------------------------
+  -- lfmi(Name) retrieves Name as a String  -
+  -- Receive: theName, a Name.                  -
+  -- PRE: theName has been initialized.         -
+  -- Return: lfm order of name on the screen -
+  -----------------------------------------------
+
+  function lfmi(TheName : in Name) return String is
+   begin
+      return TheName.MyLast & " " & TheName.MyFirst & " " & TheName.MyMiddle(TheName.MyMiddle'First) ;
+   end lfmi;
+
+----------------------------------------------------
+  -- readName() reads in names from the user input -
+  -- Receive: theName, a Name                      -
+  -- PRE: none, theName does not have to be initialized -
+  -- Return: None                                  -
+  --------------------------------------------------
+
+ procedure readName(TheName: out Name)  is
+   begin 
+      Put( "Please enter the new first name: ");
+      Get_Line(first, charsRead);
+      TheName.MyFirst := first;
+
+      Put( "Please enter the new middle name: ");
+      Get_Line(middle, charsRead);
+      TheName.MyMiddle := middle;
+
+      Put( "Please enter the new last name: ");
+      Get_Line(last, charsRead);
+      TheName.MyLast := last;
+   end readName;
+
+begin
+   Init(aName, "John    ", "Paul    ", "Jones   ");
+
+   pragma Assert( getFirst(aName) = "John    ", "getFirst() failed");
+   pragma Assert( getMiddle(aName) = "Paul    ", "getMiddle() failed");
+   pragma Assert( getLast(aName) = "Jones   ", "getLast() failed");
+   pragma Assert( getFullName(aName) = "John     Paul     Jones   ", 
+                    "getFullName() failed");
+   pragma Assert( lfmi(aName) = "Jones    John     P", 
+                    "lfmi() failed first");
+   Put(aName); New_line;                 
+   
+   setFirst(aName, "Nathan  ");
+   setMiddle(aName, "Bloom   ");
+   setLast(aName, "Smith   ");
+
+   pragma Assert( getFirst(aName) = "Nathan  ", "getFirst() failed");
+   pragma Assert( getMiddle(aName) = "Bloom   ", "getMiddle() failed");
+   pragma Assert( getLast(aName) = "Smith   ", "getLast() failed");
+   pragma Assert( getFullName(aName) = "Nathan   Bloom    Smith   ", 
+                    "getFullName() failed");
+   pragma Assert( lfmi(aName) = "Smith    Nathan   B", 
+                    "lfmi() failed");
+   Put(aName);    
+   New_line;
+   readName(aName);
+   pragma Assert( getFullName(aName) /= "Nathan    Bloom    Smith   ", 
+                    "getFullName() failed");
+   Put(aName); New_line;
+   Put("All tests passed!"); New_line;
+
+end name_tester;
+
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ ./name_tester
+John     Paul     Jones   
+Nathan   Bloom    Smith   
+Please enter the new first name: byebye
+Please enter the new middle name: project
+Please enter the new last name: seven
+byebye   project  seven   
+All tests passed!
+]0;sp46@gold19: ~/214/projects/07[01;32msp46@gold19[00m:[01;34m~/214/projects/07[00m$ exit
+
+Script done on 2020-05-12 11:48:04-0400
+Script started on 2020-04-09 11:38:28-0400
+]0;sp46@gold09: ~/214/projects/07/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/07/clojure[00m$ c cd src
+]0;sp46@gold09: ~/214/projects/07/clojure/src[01;32msp46@gold09[00m:[01;34m~/214/projects/07/clojure/src[00m$ cat nameTester.clj
+;;;; nameTester.clj creates and tests a clojure Name type.
+;;;;
+;;;; Output: results of testing Name functions.
+;;;;
+;;;; Usage: clojure -m nameTester
+;;;;
+;;;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;;;; Completed by: Sinai Park (sp46)
+;;;; Date: April 1 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns nameTester)   ; program name
+
+;;; define a Clojure record named Name 
+;;; (which compiles to a Java class).
+
+(defrecord Name [firstName, middleName, lastName])
+  
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; make-Name constructs a Name from three strings. 
+;;; Receive: firstN, middleN and lastN, three strings.
+;;; Return: the Name (firstN middleN lastN). 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn make-Name [firstN, middleN, lastN]
+  (->Name firstN, middleN, lastN)
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; getFirst() extracts the first name of a Name object.
+;;; Receive: aName, a Name.
+;;; Return: the firstName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn getFirst[^Name aName]
+  (:firstName aName) 
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; getMiddle() extracts the middle name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the middleName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn getMiddle[^Name aName]
+  (:middleName aName) 
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; getLast() extracts the last name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the lastName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn getLast[^Name aName]
+  (:lastName aName) 
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; getFullName() returns a full name in F-M-L order. 
+;;; Receive: aName, a Name. 
+;;; Return: firstName, middleName, lastName,
+;;;           separated by spaces. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn getFullName[^Name aName]
+  (str (getFirst aName) " " (getMiddle aName) " " (getLast aName)) 
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; printName() displays a name object.
+;;; Receive: aName, a Name.
+;;; Output: the strings in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn printName[^Name aName]
+  (print (getFullName aName) )
+)
+
+
+
+; PROJECT 07 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setFirst() changes the first name of a Name object.
+;;; Receive: aName, a Name.
+;;; Return: the changed firstName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn setFirst[aName newFirst]
+  (->Name newFirst (:middleName aName) (:lastName aName))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setMiddle() changes the middle name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the middleName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn setMiddle[aName newMiddle]
+  (->Name (:firstName aName) newMiddle (:lastName aName))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setLast() changes the last name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the lastName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn setLast[aName newLast]
+  (->Name (:firstName aName) (:middleName aName) newLast)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; lfmi() returns a full name in L-F-M order. 
+;;; Receive: aName, a Name. 
+;;; Return: lastName, firstName, middleName,
+;;;           separated by spaces. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn lfmi[^Name aName]
+  (str (getLast aName) " " (getFirst aName) " " (subs (getMiddle aName) 0 1) )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; readName() creates a name from user input. 
+;;; Receive: aName, a Name. 
+;;; Return: none 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn readName[^Name aName]
+  (print "Please enter the first name: ") (flush)
+  (let
+    [firstName (read-line)]
+      (print "Please enter the middle name: ") (flush)
+      (let
+        [ middleName (read-line)]
+          (print "Please enter the last name: ") (flush)
+          (let
+            [lastName (read-line)]
+             (->Name firstName middleName lastName)
+          )
+      )
+  )
+
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; A simple driver to test our Name functions. 
+;;; Output: the result of testing our Name functions.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let
+    [                                          ; 3 ways to construct an object:
+       name1 (make-Name "John" "Paul" "Jones")  ; -using our "make-" constructor
+       name2 (->Name "Jane" "Penelope" "Jones") ; -invoking constructor directly                                                   
+       name3 (map->Name {:lastName "Jones" :firstName "Jinx" :middleName "Joy"}) ; -mapping field-names to values; 
+    ]
+    ;; ----- SECTION 1 -----
+    (println)
+    (print name1) (println)
+    (assert (= (getFirst name1) "John") "getFirst(1) failed")
+    (assert (= (getMiddle name1) "Paul") "getMiddle(1) failed")
+    (assert (= (getLast name1) "Jones") "getLast(1) failed")
+    (assert (= (getFullName name1) "John Paul Jones") "toStgetFullNamering(1) failed")
+    (assert (= (lfmi name1) "Jones John P") "lfmi(1) failed")
+    (printName name1) (println)
+
+    (let 
+      [name1 (setFirst name1 "Gray")
+       name1 (setMiddle name1 "Brown") 
+       name1 (setLast name1 "Smith")
+      ]
+
+    (assert (= (getFirst name1) "Gray") "getFirst(1) failed")
+    (assert (= (getMiddle name1) "Brown") "getMiddle(1) failed")
+    (assert (= (getLast name1) "Smith") "getLast(1) failed")
+    (assert (= (getFullName name1) "Gray Brown Smith") "toStgetFullNamering(1) failed")
+    (printName name1) (println)
+    (assert (= (lfmi name1) "Smith Gray B") "lfmi(1) failed")
+
+    (let [name1 (readName name1)]
+    (printName name1) (println)
+    ;; ----- SECTION 2 -----
+    (println)
+    (print name2) (println)
+    (assert (= (getFirst name2) "Jane") "getFirst(2) failed")
+    (assert (= (getMiddle name2) "Penelope") "getMiddle(2) failed")
+    (assert (= (getLast name2) "Jones") "getLast(2) failed")
+    (assert (= (getFullName name2) "Jane Penelope Jones") "getFullName(2) failed")
+    (printName name2) (println)
+    ;; ----- SECTION 3 -----
+    (println)
+    (print name3) (println)
+    (assert (= (getFirst name3) "Jinx") "getFirst(3) failed")
+    (assert (= (getMiddle name3) "Joy") "getMiddle(3) failed")
+    (assert (= (getLast name3) "Jones") "getLast(3) failed")
+    (assert (= (getFullName name3) "Jinx Joy Jones") "getFullName(3) failed")
+    (printName name3) (println)
+
+
+    (println "\nAll tests passed!\n")
+  ))
+))
+
+Full report at:
+/tmp/clojure-16552294698104785444.edn
+]0;sp46@gold09: ~/214/projects/07/clojure/src[01;32msp46@gold09[00m:[01;34m~/214/projects/07/clojure/src[00m$ cd -
+/home/sp46/214/projects/07/clojure
+]0;sp46@gold09: ~/214/projects/07/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/07/clojure[00m$ cd -lojure -m nameTester
+
+#nameTester.Name{:firstName John, :middleName Paul, :lastName Jones}
+John Paul Jones
+Gray Brown Smith
+Please enter the first name: bye
+Please enter the middle name: project
+Please enter the last name: 07
+bye project 07
+
+#nameTester.Name{:firstName Jane, :middleName Penelope, :lastName Jones}
+Jane Penelope Jones
+
+#nameTester.Name{:firstName Jinx, :middleName Joy, :lastName Jones}
+Jinx Joy Jones
+
+All tests passed!
+
+]0;sp46@gold09: ~/214/projects/07/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/07/clojure[00m$ exit
+
+Script done on 2020-04-09 11:39:04-0400
+Script started on 2020-04-08 11:03:26-0400
+]0;sp46@gold09: ~/214/projects/07[01;32msp46@gold09[00m:[01;34m~/214/projects/07[00m$ cat NameTester.rb
+# NameTester.rb tests class Name and its operations
+#
+# Begun by: Dr. Adams, for CS 214 at Calvin College.
+# Completed by: Sinai Park (sp46)
+# Date: April 1 2020
+####################################################
+
+require 'test/unit/assertions'   # needed for assert
+include Test::Unit::Assertions
+
+class Name
+
+   def initialize(first, middle, last)
+     @first, @middle, @last = first, middle, last
+   end
+   #shortcut function of all the "getter" functions
+   attr_reader :first, :middle, :last
+
+   #function fullName() to return the full name of a type Name
+   def fullName()
+      return first + " " + middle + " " + last
+   end
+   
+   #function print() to print the full name to the consoles
+   def print()
+      puts ( fullName() )
+      fullName()
+   end
+
+
+   #shortcut function of all the "set[nameorder]" functions
+   attr_writer :first, :middle, :last
+
+   #function lfmi() prints the full name of a type Name in last, first, middile initial order
+   def lfmi()
+      return last + " " + first + " " + middle[0] 
+   end
+
+   #function readName() reads in first, middle, last names from user input
+   def readName()
+      puts ("Please enter the first name: ")
+      @first = gets.chomp
+      puts ("Please enter the middle name: ")
+      @middle = gets.chomp
+      puts ("Please enter the last name: ")
+      @last = gets.chomp
+   end
+
+
+end
+
+
+def testName
+   name = Name.new("John", "Paul", "Jones")
+
+   assert name.first == "John", "first failed"
+   assert name.middle == "Paul", "middle failed"
+   assert name.last == "Jones", "last failed"
+   assert name.fullName == "John Paul Jones", "fullName failed"
+   assert name.print == "John Paul Jones", "print failed"
+
+   name.first = "Nathan"
+   name.middle = "Yeol"
+   name.last = "Smith"
+
+   assert name.first == "Nathan", "first failed"
+   assert name.middle == "Yeol", "middle failed"
+   assert name.last == "Smith", "last failed"
+
+   assert name.fullName == "Nathan Yeol Smith", "fullname failed"
+   assert name.print == "Nathan Yeol Smith", "fullname failed"
+   assert name.lfmi == "Smith Nathan Y", "lfmi failed"
+
+   name.readName
+   assert name.fullName != "Nathan Yeol Smith", "readName failed"
+
+   
+   print "All tests passed!\n"
+end
+
+testName
+
+]0;sp46@gold09: ~/214/projects/07[01;32msp46@gold09[00m:[01;34m~/214/projects/07[00m$ ruby NameTester.rb
+John Paul Jones
+Nathan Yeol Smith
+Please enter the first name: 
+Bluetoosh  th
+Please enter the middle name: 
+Ear
+Please enter the last name: 
+Phones
+All tests passed!
+]0;sp46@gold09: ~/214/projects/07[01;32msp46@gold09[00m:[01;34m~/214/projects/07[00m$ exit
+
+Script done on 2020-04-08 11:04:00-0400

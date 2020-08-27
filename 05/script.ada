@@ -1,80 +1,100 @@
-Script started on 2020-03-06 13:01:37-0500
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ cat split.adb
--- split.adb splits an input string about a specified position.
+Script started on 2020-03-12 09:41:52-0400
+]0;sp46@gold09: ~/214/projects/05[01;32msp46@gold09[00m:[01;34m~/214/projects/05[00m$ cat roots.adb
+-- roots.adb takes in a quadratic function
+-- and determines if valid roots can be calculated and prints them
 --
--- Input: Astring, a string,
---        Pos, an integer.
--- Precondition: pos is in Astring'Range.
--- Output: The substrings Astring(Astring'First..Pos-1) and
---                        Astring(Pos..Astring'Last).
+-- rootcalc() finds the roots of a quadratic equation
+-- Receive: 	equation(a, b, c) - the quadratic function coefficients to be evaluated
+-- 		        
+-- Returns:   true ---- roots, calculated by the quadratic formula
+--            false --- if b^2 - 4ac is (-) or if a is 0
 --
 -- Begun by: Dr. Adams, for CS 214 at Calvin College.
--- Completed by: Sinai Park(sp46)
--- Date: March 6 2020
+-- Completed by: Sinai Park (sp46)
+-- Date: March 9 2020
 --------------------------------------------------------------
+with Ada.Text_IO, Ada.Float_Text_IO, Ada.Numerics.Elementary_Functions;
+use  Ada.Text_IO, Ada.Float_Text_IO, Ada.Numerics.Elementary_Functions;
 
-with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Strings.Fixed;
-use  Ada.Text_IO, Ada.Integer_Text_IO, Ada.Strings.Fixed;
+procedure roots is
 
-procedure split is
-
-   EMPTY_STRING : String := "                                        ";
-
-   Astring, Part1, Part2 : String  := EMPTY_STRING;
-   Pos, Chars_read       : Natural;
+   A, B, C, Root1, Root2 : Float;
+   isTrue                : Boolean;
 
    ------------------------------------------------
-   --  split() splits a string in two.           
-   -- Receive: The_String, the string to be split,
-   --          Position, the split index.        
-   -- PRE: 0 < Position <= The_String.length(). 
-   --     (Ada arrays are 1-relative by default)
-   -- Passback: First_Part - the first substring,
-   --           Last_Part - the second substring.
+   -- rootcalc() computes the valid roots of a quadratic function           
+   -- Receive: (double a, b, c) - the quadratic function 
+   --                             coefficients to be evaluated       
+   -- PRE: the discriminant must not be a negative
+   --      the coefficient of x^2 must not be zero
+   -- Passback: boolean true - valid, real roots
+   --                   false - invalid, roots
    ------------------------------------------------
-   -- Replace this line with definition of split() 
+   -- Replace this line with definition of rootcalc() 
 
-   procedure split (The_String: in String; Pos: in Natural) is
-	   begin
-         -- Move the first substring into the Part1
-         Move(The_String ( The_String'First .. Pos-1 ), Part1);
+   procedure rootcalc(A: in Float; B: in Float; C: in Float; isTrue: out Boolean)
+      is 
+      discriminant: Float := (B * B) - (4.0 * A * C);
+      begin
+         --if the coefficent of x^2 is not a zero, compute the roots
+         if A/= 0.0 then
+            if discriminant >= 0.0 then
+               Root1 := ((-B + discriminant ** (1.0/2.0))/(2.0*A));
+               Root2 := ((-B - discriminant ** (1.0/2.0))/(2.0*A));
+               isTrue := true;
 
-         -- Move the second substring into the Part2
-         Move(The_String ( Pos .. The_String'Last ), Part2);
+            --if the discriminant is a negative value, no real roots
+            else
+               Put ("ERROR: nThe discriminatnt (b^2 - 4ac) is negative!");
+               isTrue := false;
+            end if;
+         
+         --if A is a zero
+         else 
+            Put ("ERROR: The coefficent of x^2 is a zero");
+            isTrue := false;
+         end if;
+      end;
 
-      end split;
+   begin                                           -- Prompt for input
+   Put("To compute the roots of the quadratic formula y = ax^2 + bx + c,");
+   New_Line;
+   Put("Enter the a value: ");
+   Get(A);
+   PUt("Enter the b value: ");
+   Get(B);
+   Put("Enter the c value: ");
+   Get(C);
 
+   rootcalc(A, B, C, isTrue);
 
-begin                                           -- Prompt for input
-   Put("To split a string, enter the string: ");
-   Get_Line(Astring, Chars_Read);
-   Put("Enter the split position: ");
-   Get(Pos);
+   --if boolean is true
+   if isTrue = true then 
+      Put("The first root is ");
+      Put(Root1);
+      Put(" and the second root is ");
+      Put(Root2);
+   end if;
+end roots;
 
-   split(Astring, Pos);     --erase Part1, Part2 
+]0;sp46@gold09: ~/214/projects/05[01;32msp46@gold09[00m:[01;34m~/214/projects/05[00m$ , ./roots
+To compute the roots of the quadratic formula y = ax^2 + bx + c,
+Enter the a value: 1
+Enter the b value: 9
+Enter the c value: 20
+The first root is -4.00000E+00 and the second root is -5.00000E+00
+]0;sp46@gold09: ~/214/projects/05[01;32msp46@gold09[00m:[01;34m~/214/projects/05[00m$ ./roots
+To compute the roots of the quadratic formula y = ax^2 + bx + c,
+Enter the a value: 0
+Enter the b value: 3
+Enter the c value: 4
+ERROR: The coefficent of x^2 is a zero
+]0;sp46@gold09: ~/214/projects/05[01;32msp46@gold09[00m:[01;34m~/214/projects/05[00m$ ./roots
+To compute the roots of the quadratic formula y = ax^2 + bx + c,
+Enter the a value: 1
+Enter the b value: -3
+Enter the c value: 4
+ERROR: nThe discriminatnt (b^2 - 4ac) is negative!
+]0;sp46@gold09: ~/214/projects/05[01;32msp46@gold09[00m:[01;34m~/214/projects/05[00m$ exit
 
-   Put("The first part is ");
-   Put_Line(Part1);
-   Put(" and the second part is ");
-   Put_Line(Part2);
-
-end split;
-
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ ./split
-To split a string, enter the string: hello
-Enter the split position: 1
-The first part is                                         
- and the second part is hello                                   
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ ./split
-To split a string, enter the string: hello 
-Enter the split position: 4
-The first part is hel                                     
- and the second part is lo                                      
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ ./split
-To split a string, enter the string: hello
-Enter the split position: 6
-The first part is hello                                   
- and the second part is                                         
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ exit
-
-Script done on 2020-03-06 13:02:10-0500
+Script done on 2020-03-12 09:42:17-0400

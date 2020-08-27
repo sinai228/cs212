@@ -1,0 +1,276 @@
+Script started on 2020-03-05 10:10:22-0500
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ cat c Factorial.java
+/* Factorial.java displays the factorial of a given number
+ *
+ * Input: number n.
+ * PRE: numer must be greater than zero
+ * Output: A value that is the factorial of the number input, n
+ * 
+ * Begun by: Nelesen, for CS 214 at Calvin College.
+ * Completed by: Sinai Park(sp46)
+ * Date: March 2 2020
+ ********************************************************/
+import java.util.Scanner; // Get input
+
+class Factorial{
+
+  public static void main(String[] args) {
+     
+    Scanner keyboard = new Scanner(System.in);
+    System.out.println("\nTo compute n!, enter n: ");
+    double number = keyboard.nextDouble(); //the input integer is the number being calculated
+   
+    // computing the factorial in a for loop
+
+    double result = 1;                 //store resulting factorial in result
+    for (double i = number; i > 0; i--)//as i is number, start from it and decrement
+    {
+      result *= i;    //compute factorial in the for loop
+    }
+      System.out.println("The factorial of " + number + " is " ); //system output
+      System.out.println(result);                                 //print the factorial
+      
+  }
+}
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ javac -deprecation Factorial.java
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ java Factorial
+
+To compute n!, enter n: 
+2
+The factorial of 2.0 is 
+2.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ java Factorial
+
+To compute n!, enter n: 
+4
+The factorial of 4.0 is 
+24.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ java Factorial
+
+To compute n!, enter n: 
+6
+The factorial of 6.0 is 
+720.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ java Factorial
+
+To compute n!, enter n: 
+8
+The factorial of 8.0 is 
+40320.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ java Factorial
+
+To compute n!, enter n: 
+21
+The factorial of 21.0 is 
+5.109094217170944E19
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ exit
+
+Script done on 2020-03-05 10:11:02-0500
+Script started on 2020-03-05 10:14:15-0500
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ cat factorial.adb
+-- Factorial.adb computes the factorial of a given numbers.
+--
+-- Input: a number, float.
+-- Precondition: the number must be a positive integer.
+-- Output: The nth factorial of the integer value n
+--
+-- Begun by: Prof. Adams, for CS 214 at Calvin College.
+-- Completed by: Sinai Park(sp46)
+-- Date: March 4 2020
+--------------------------------------------------------------
+
+with Ada.Text_IO, Ada.Float_Text_IO, Ada.Numerics.Elementary_Functions;
+use  Ada.Text_IO, Ada.Float_Text_IO, Ada.Numerics.Elementary_Functions;
+
+procedure factorial is
+
+   Number, result, count : Float;               --create variables: number, result and count 
+
+begin                                           -- Prompt for input value 
+   Put_Line("To compute the n! factorial,");
+   Put(" enter the number value: ");
+   Get(Number);
+   count := Number;
+
+   -- Replace this line with a loop 
+    
+   result := 1.0;
+   loop
+      exit when (count = 0.0);                 --done multiplying each number value
+
+      --multiply it and decrement one from the given number value and loop again
+      
+      result := result * count;   --store n! value in result
+      count := count - 1.0 ;      --decrement value and multiply again
+
+   end loop;
+
+   Put("The n! factorial of ");  --display words
+   Put(Number);                  --display the n value, which we are computing the factorial of
+   Put(" is ");
+   Put(result);                  --display the factorial
+   New_Line;                     --enter into new line
+  
+end factorial;
+
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ gnatmake factorial
+gnatmake: "factorial" up to date.
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ./factorial
+To compute the n! factorial,
+ enter the number value: 2
+The n! factorial of  2.00000E+00 is  2.00000E+00
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ./factorial
+To compute the n! factorial,
+ enter the number value: 4
+The n! factorial of  4.00000E+00 is  2.40000E+01
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ./factorial
+To compute the n! factorial,
+ enter the number value: 6
+The n! factorial of  6.00000E+00 is  7.20000E+02
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ./factorial
+To compute the n! factorial,
+ enter the number value: 8
+The n! factorial of  8.00000E+00 is  4.03200E+04
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ./factorial
+To compute the n! factorial,
+ enter the number value: 21
+The n! factorial of  2.10000E+01 is  5.10909E+19
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ exit
+
+Script done on 2020-03-05 10:14:39-0500
+Script started on 2020-03-05 10:08:45-0500
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ cat   cd c src
+]0;sp46@gold10: ~/214/projects/04/clojure/src[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure/src[00m$ cat factorial.clj
+;;;; logTable.clj displays a table of logarithms.
+;;;;
+;;;; Input: a number, float.
+;;;; Precondition: the number must be a positive integer.
+;;;; Output: The nth factorial of the integer value n
+;;;;
+;;;; Begun by: Prof. Adams, for CS 214 at Calvin College.
+;;;; Completed by: Sinai Park(sp46)
+;;;; Date: March 4 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns factorial)                                 ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Factorial() recursively generates the nth factorial of a number.
+;;;; Receive: the nth count as it decrements by one each loop
+;;;;
+;;;; Precondition: count value must be greater than zero.
+;;;;                factorial number must start at one
+;;;; Output: The factorial of given number.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; direct-recursive version
+
+; replace this line with the definition of Factorial().
+
+(defn factorialCalc [number result count] 
+  (if (<= count number) 
+    (do 
+      (factorialCalc number (* result count) (+ count 1)) ;recursion
+     
+  )
+  result ;show factorial stores in result variable
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; -main is a 'driver' for the displayLogTable() functions.
+;;; Input: n, integer value.
+;;; Output: The factorial of the integer value n, as user input
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn -main []
+ (print "To compute the factorial of given n,enter the value: ") (flush)
+  (let  
+    [number (read)]
+    (print(factorialCalc number 1.0 2.0))
+    (println)
+  )
+ )
+]0;sp46@gold10: ~/214/projects/04/clojure/src[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure/src[00m$ cd - 
+/home/sp46/214/projects/04/clojure
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ clojure -m factorial
+To compute the factorial of given n,enter the value: 2
+2.0
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ clojure -m factorial
+To compute the factorial of given n,enter the value: 4
+24.0
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ clojure -m factorial
+To compute the factorial of given n,enter the value: 6
+720.0
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ clojure -m factorial
+8
+To compute the factorial of given n,enter the value: 40320.0
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ clojure -m factorial
+To compute the factorial of given n,enter the value: 21
+5.109094217170944E19
+]0;sp46@gold10: ~/214/projects/04/clojure[01;32msp46@gold10[00m:[01;34m~/214/projects/04/clojure[00m$ exit
+
+Script done on 2020-03-05 10:09:28-0500
+Script started on 2020-03-05 10:15:50-0500
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ cat factorial.rb
+#! /usr/bin/ruby
+# Factorial.rb displays a table of logarithms
+#
+# Begun by: Prof. Adams, for CS 214 at Calvin College.
+# Completed by: Sinai Park(sp46)
+# Date: March 4 2020
+#
+# Input: a number, float.
+# Precondition: the number must be a positive integer.
+# Output: The nth factorial of the integer value n
+
+
+if __FILE__ == $0
+   print "To compute the n! factorial, enter the n value: "
+#number gets convered into a floating point
+   number = gets.chomp.to_f
+
+   count = number  #set decremening value to number
+   result = 1.0    #set initial value to 1 (resulting factorial)
+#  Replace this line with a loop to display the factorial
+
+   until (count == 0.0)
+
+      # first multiply the nth nubmer to the resulting value variable
+      
+      result *= count
+
+      # print out the answer using Ruby string in-lining
+      
+
+      #lastly, increment the start value
+      count -= 1.0
+
+   end
+      print "The nth factorial of #{number} is #{result}"
+      puts("\n")
+end
+
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ruby factorial
+factorial:1: Invalid char `\x7F' in expression
+factorial:1: Invalid char `\x02' in expression
+factorial:1: Invalid char `\x01' in expression
+factorial:1: Invalid char `\x01' in expression
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ruby factorial.rb
+To compute the n! factorial, enter the n value: 2
+The nth factorial of 2.0 is 2.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ruby factorial.rb
+To compute the n! factorial, enter the n value: 4
+The nth factorial of 4.0 is 24.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ruby factorial.rb
+To compute the n! factorial, enter the n value: 6
+The nth factorial of 6.0 is 720.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ruby factorial.rb
+To compute the n! factorial, enter the n value: 8
+The nth factorial of 8.0 is 40320.0
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ ruby factorial.rb
+To compute the n! factorial, enter the n value: 21
+The nth factorial of 21.0 is 5.109094217170944e+19
+]0;sp46@gold10: ~/214/projects/04[01;32msp46@gold10[00m:[01;34m~/214/projects/04[00m$ exit
+
+Script done on 2020-03-05 10:16:18-0500

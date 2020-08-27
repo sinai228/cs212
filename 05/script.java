@@ -1,121 +1,125 @@
-Script started on 2020-03-06 12:44:22-0500
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ java Split.java[14@c -deprecation Split.java[15Pcat Split.java[15@javac -deprecation Split.java
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ javac -deprecation Split.java Split[K
-
-To split a string, enter the string: 
-he  Exception in thread "main" java.util.NoSuchElementException
-	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
-	at java.base/java.util.Scanner.next(Scanner.java:1478)
-	at Split.main(Split.java:20)
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ scip  ript script.ajva    java
-Script started, file is script.java
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ cat Split.java
-/* Split.java is a class and program that splits a string
+Script started on 2020-03-09 14:42:52-0400
+c]0;sp46@gold11: ~/214/projects/05[01;32msp46@gold11[00m:[01;34m~/214/projects/05[00m$ cat Roots.java
+/* Roots.java is a class and program that splits a string
  * into two substrings.
  * 
  * Begun by: Serita Nelesen
- * Completed by: Sinai Park(sp46)
- * Date: March 5 2020
+ * Completed by: 
  ***************************************************************/
 
 import java.util.Scanner;
 
-// java class Split
-public class Split
+// java class Roots
+public class Roots
 {
   // main program
   public static void main(String[] args)
     {
       Scanner keyboard = new Scanner(System.in);
-      // prompt for the string
-      System.out.println("\nTo split a string, enter the string: ");
-      String theString = keyboard.next();
+      // prompt for the a value (second coefficient)
+      System.out.println("\nTo compute the roots of the quadratic formula \ny = ax^2 + bx + c, \nenter the a value: ");
+      double a_value = keyboard.nextDouble();
       
-      // prompt for splitting position
-      System.out.println("\nEnter the split position: ");
-      int position = keyboard.nextInt();
+      // prompt for b value (second coefficient)
+      System.out.println("\nEnter the b value: ");
+      double b_value = keyboard.nextDouble();
 
-      //Create list, compute results and print
-      String [] resultList = new String[2];
-      splitter(theString, position, resultList);
-      System.out.println("\nThe first part is " + resultList[0] + "\nand the second part is " + resultList[1]);
+      // prompt for c value (constant)
+      System.out.println("\nEnter the c value: ");
+      double c_value = keyboard.nextDouble();
+
+      //Create a new array to store the two root values
+      double [] rootlist = new double[2];
+    
+
+      //Call the quadraticRoots function to determine what are the roots, if there are any
+		  boolean istrue = rootcalc(a_value, b_value, c_value, rootlist);
+
+      //compute the roots of the function and print if the boolean is true
+
+      if (istrue) 
+      {
+        System.out.println("\nThe roots are " + rootlist[0] + " and " + rootlist[1]);
+
+      }
       
     }
   
-  /* splitter() splits a string according to the position specified
-   * Receive: 	theString - the string to be split
-   * 	         	pos - the position at which to split
-   *            resList - an array of strings in which to place results
+  /* rootcalc() finds the roots of a quadratic equation
+   * Receive: 	equation - the quadratic function to be evaluated
+   * 		        
+   * Returns:   true ---- roots, calculated by the quadratic formula
+   *            false --- if b^2 - 4ac is (-) or if a is 0
    *****************************************************/
-  // replace this line with a definition for splitter
+  // replace this line with a definition for rootcalc
 
-  public static void splitter(String theString, int pos, String[] results)
-  {
-  // store the  substring into the array at index 0
-   results[0] = theString.substring(0, pos);
-
-   // store the second substring into the array at index 1
-   results[1] = theString.substring(pos, theString.length());
-
-  } 
+    public static boolean rootcalc(double a, double b, double c, double[] rootlist)
+    {
+      if (a != 0) {
+        double discriminant = (Math.pow(b, 2) - 4 * a * c); 
+        if (discriminant >= 0) {
+          rootlist[0] = (-b + Math.sqrt(discriminant))/(2*a);    //store the first root in the first array
+          rootlist[1] = (-b - Math.sqrt(discriminant))/(2*a);    //store the first root in the first array
+          return true;
+        }
+        else {    //roots are unreal numbers
+          System.out.println("\nThe discriminatnt (b^2 - 4ac) is negative" );
+          //double root1 = 0;
+          //double root2 = 0;
+          return false;
+        }
+      }
+      else {    //if a is equal to 0
+        System.out.println("\nThe coefficent of x^2 is a zero" );
+        //double root1 = 0;
+        //double root2 = 0;
+        return false;
+      }
+    }
 }
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ cat Split.java[4Pjava Split.java[14@c -deprecation Split.java
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ javac -deprecation Split.java[15Pcat Split.java[4Pjava Split
+]0;sp46@gold11: ~/214/projects/05[01;32msp46@gold11[00m:[01;34m~/214/projects/05[00m$ javac -deprea cation Roots.java
+R]0;sp46@gold11: ~/214/projects/05[01;32msp46@gold11[00m:[01;34m~/214/projects/05[00m$ R jjava    ava Roots
 
-To split a string, enter the string: 
-hello
+To compute the roots of the quadratic formula 
+y = ax^2 + bx + c, 
+enter the a value: 
+1
 
-Enter the split position: 
+Enter the b value: 
+9 -9
+
+Enter the c value: 
+20
+
+The roots are 5.0 and 4.0
+]0;sp46@gold11: ~/214/projects/05[01;32msp46@gold11[00m:[01;34m~/214/projects/05[00m$ java Roots
+
+To compute the roots of the quadratic formula 
+y = ax^2 + bx + c, 
+enter the a value: 
 0
 
-The first part is 
-and the second part is hello
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ java Split
+Enter the b value: 
+4
 
-To split a string, enter the string: 
-elo   hello 0  
+Enter the c value: 
+1
 
-Enter the split position: 
-3
+The coefficent of x^2 is a zero
+]0;sp46@gold11: ~/214/projects/05[01;32msp46@gold11[00m:[01;34m~/214/projects/05[00m$ java Roots
 
-The first part is hel
-and the second part is lo
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ java Split
+To compute the roots of the quadratic formula 
+y = ax^2 + bx + c, 
+enter the a value: 
+1
 
-To split a string, enter the string: 
-hello 5  
+Enter the b value: 
+-3
 
-Enter the split position: 
-5
+Enter the c value: 
+4
 
-The first part is hello
-and the second part is 
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ exit
-Script done, file is script.java
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ gnatmake split.adb
-x86_64-linux-gnu-gcc-7 -c split.adb
-split.adb:35:59: "," should be ";"
-split.adb:52:04: no candidate interpretations match the actuals:
-split.adb:52:04: too many arguments in call to "split"
-gnatmake: "split.adb" compilation error
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ gnatmake split.adb
-x86_64-linux-gnu-gcc-7 -c split.adb
-split.adb:35:96: identifier expected
-gnatmake: "split.adb" compilation error
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ gnatmake split.adb
-x86_64-linux-gnu-gcc-7 -c split.adb
-split.adb:38:57: actual for "Target" must be a variable
-split.adb:41:54: actual for "Target" must be a variable
-gnatmake: "split.adb" compilation error
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ gnatmake split.adbscript script.javagnatmake split.adb
-x86_64-linux-gnu-gcc-7 -c split.adb
-split.adb:52:04: no candidate interpretations match the actuals:
-split.adb:52:04: too many arguments in call to "split"
-gnatmake: "split.adb" compilation error
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ gnatmake split.adb
-x86_64-linux-gnu-gcc-7 -c split.adb
-x86_64-linux-gnu-gnatbind-7 -x split.ali
-x86_64-linux-gnu-gnatlink-7 split.ali
-]0;sp46@gold05: ~/214/labs/05[01;32msp46@gold05[00m:[01;34m~/214/labs/05[00m$ script scripta .ada
-Script started, file is script.ada
-cat split.a
+The discriminatnt (b^2 - 4ac) is negative
+]0;sp46@gold11: ~/214/projects/05[01;32msp46@gold11[00m:[01;34m~/214/projects/05[00m$ exit
+
+Script done on 2020-03-09 14:44:02-0400

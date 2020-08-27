@@ -1,8 +1,11 @@
 /* NameTester.java is a 'driver' to test class Name.
  * Begun by: Prof. Adams, for CS 214 at Calvin College.
  * Student: Sinai Park(sp46)
- * Date: March 25 2020
+ * Date: April 1 2020
  ************************************************************/
+
+ import java.io.*;
+ import java.util.Scanner;
 
 public class NameTester  
 {
@@ -13,9 +16,29 @@ public class NameTester
       assert aName.getFirst().equals("John") ;
       assert aName.getMiddle().equals("Paul") ;
       assert aName.getLast().equals("Jones") ;
-
+     
       System.out.println(aName);
       assert aName.toString().equals("John Paul Jones");
+      assert aName.lfmi().equals("Jones John Paul");  //testing lfmi function
+
+      //testing setFirst, setMiddle, setLast
+      aName.setFirst("Michael") ;
+      aName.setMiddle("Moses") ;
+      aName.setLast("Smith");
+      assert aName.getFirst().equals("Michael") ;
+      assert aName.getMiddle().equals("Moses") ;
+      assert aName.getLast().equals("Smith") ;
+
+      System.out.println(aName);
+      assert aName.toString().equals("Michael Moses Smith");
+      assert aName.lfmi().equals("Smith Michael Moses");    //testing lfmi function
+
+      //testing readName()
+      Name test_Name = new Name("John", "Paul", "Jones");
+      Scanner keyboard = new Scanner(System.in);
+
+      test_Name.readName(keyboard);
+      System.out.println(test_Name.toString());
 
       System.out.println("All tests passed!");
   }
@@ -64,6 +87,44 @@ class Name
       //print() prints out the string object to the console
       public void print() {
          System.out.println( toString() );
+      }
+
+
+
+
+      //setFirst() returns the first name of the Name object          
+      public void setFirst(String newFirst)
+      {
+         myFirst = newFirst;
+      
+      }
+      //setMiddle() returns the middle name of the Name object
+      public void setMiddle(String newMiddle)
+      {
+         myMiddle = newMiddle;
+      }
+      //setLast() returns the last name of the Name object
+      public void setLast(String newLast)
+      {
+         myLast = newLast;
+      }
+      //lfmi() displays the Name object in order of last, first, and middle
+      public String lfmi()
+      {
+         return myLast + ' ' + myFirst + ' ' + myMiddle.charAt(0) ;
+      }
+
+      //readName() uses user input to receive input from user for myFirst, myMiddle, and myLast
+      public void readName(Scanner keyboard)
+      {
+         System.out.println("Please enter the first name");
+         myFirst = keyboard.next();
+          
+         System.out.println("Please enter the middle name");
+         myMiddle = keyboard.next();
+
+         System.out.println("Please enter the last name");
+         myLast = keyboard.next();
       }
 
 

@@ -1,85 +1,119 @@
-Script started on 2020-03-06 14:45:43-0500
-]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ c cd src
-]0;sp46@maroon21: ~/214/labs/05/clojure/src[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure/src[00m$ cat sp;l   lit.     split.clj
-;;;; split.clj splits a string into two substrings.
+Script started on 2020-03-12 20:44:07-0400
+]0;sp46@gold16: ~/214/projects/05/clojure[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure[00m$ clo   c cd src
+]0;sp46@gold16: ~/214/projects/05/clojure/src[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure/src[00m$ cat roots.clj
+;;;; roots.clj splits a string into two substrings.
 ;;;;
-;;;; Input: aString, the string to be split,
-;;;;        pos, the index where aString is to be split.
-;;;; Output: the substring of aString before pos, and
-;;;;         the substring of aString from pos onwards.
+;;;; Input: equation(a, b, c) - the quadratic function coefficients to be evaluated
+;;;; 		        
+;;;; Output:   true ---- roots, calculated by the quadratic formula
+;;;;           false --- if b^2 - 4ac is (-) or if a is 0
 ;;;;
-;;;; Usage: clojure -m split
+;;;; Usage: clojure -m root
 ;;;;
 ;;;; Begun by: Dr. Adams, for CS 214 at Calvin College.
 ;;;; Completed by: Sinai Park(sp46)
-;;;; Date: March 6 2020
+;;;; Date: March 12 2020
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(ns split)      ; name the program
+(ns roots)      ; name the program
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; split() splits a string into its two substrings.  
-;;; Receive: aString, the string to be split,         
-;;;          splitPos, the index where aString should be split.
-;;; PRE: 0 <= splitPos < the length of aString.
-;;; Return: the substring of aString before pos, and  
-;;;         the substring of aString from pos onwards.
+;;; rootcalc()   /* rootcalc() finds the roots of a quadratic equation
+;;; Receive: 	equation - the quadratic function values a, b, c to be evaluated
+;;; 	
+;;; PRE: a, b, c are integers
+;;;      the discriminant is not less than zero
+;;;
+;;; Returns:   true ---- roots, calculated by the quadratic formula
+;;;            false --- if b^2 - 4ac is (-) or if a is 0
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Replace this line with the definition of split()
-(defn split [aString, splitPos]
-  (let 
-    [ first_string (subs aString 0 splitPos)
-      second_string (subs aString splitPos )]
-    (vector first_string second_string)      ;;will return this because its the last one in the function
+;; Replace this line with the definition of rootcalc()
+(defn rootcalc [a, b, c,]
+    (if (= a 0)
+    ;;start if a is equal to zero: invalid rooots
+    (do
+      (print "The coefficent of x^2 is a zero\n")
+      (let [root1 0.0 
+            root2 0.0 
+            isTrue false]   ;;default values
+      (vector root1 root2 isTrue))
+    )
+    ;;else if a is not equal to 0, compute the roots
+    (do (let [arg (- (* b b) (* 4 (* a c)))]
+      (if (>= arg 0)
+        (do
+          (let [root1 (/ (+ (- 0 b) (Math/sqrt arg)) (* 2 a ))] 
+          (let [root2 (/ (- (- 0 b) (Math/sqrt arg)) (* 2 a ))]
+          (let [isTrue true]
+          (vector root1 root2 isTrue))))
+        )
+        ;;;else if discriminant is less than 0; roots are unreal numbers
+        (do 
+          (print "The discriminatnt (b^2 - 4ac) is negative\n")
+          (let [root1 0.0 root2 0.0 isTrue false]
+          (vector root1 root2 isTrue))
+        ) 
+      )
+    ))
   )
 )
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; main function
-;;; Input: the string to be split,
-;;;        the index where it should be split.
-;;; Output: the two split parts of the string.
+;;; Input: a, b, c, values of quadratic function
+;;; Output: the roots of the function, if real numbers
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defn -main []
-  (print "To split a string, enter the string: ") (flush)
+  (print "To compute the roots of the quadratic formula \ny = ax^2 + bx + c, \nenter the a value:") (flush)
   (let
-    [ aString (read-line) ]                      ; read the string
-    (print "Enter the split position: ") (flush)
+    [ a (read) ]                      ; read the string
+    (print "Enter the b value: ") (flush)
     (let 
-      [ pos (read)                               ; read the split pos.
-        result (split aString pos)               ; split the string
-        part1 (get result 0)                     ; retrieve the two
-        part2 (get result 1)                     ;  parts
-      ]
-                                                 ; display the parts
-      (printf (str "\nThe first part is \"%s\" and" 
-                    " the second part is \"%s\"\n\n")
-                       part1 part2)
+      [ b (read) ]                 ; read the split pos.
+      (print "Enter the c value: ") (flush)
+      (let 
+        [ c (read)  
+        result (rootcalc a b c)                  ; compute the roots of the function
+        root1 (get result 0)                     ; retrieve the first root from first
+        root2 (get result 1)                     ; retrieve the second root
+        isTrue (get result 2)]
+      (if (= isTrue true)                                         ; display the roots
+      (do 
+        (printf (str "\nThe first root is \"%s\" and" 
+                    " the second root is \"%s\"\n\n")
+                       root1 root2))
+      (do (print "")))
+     )
     )
   )
 )
+]0;sp46@gold16: ~/214/projects/05/clojure/src[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure/src[00m$ cd -
+/home/sp46/214/projects/05/clojure
+]0;sp46@gold16: ~/214/projects/05/clojure[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure[00m$ clojure 0m  -m roots
+To compute the roots of the quadratic formula 
+y = ax^2 + bx + c, 
+enter the a value:1
+Enter the b value: 9
+Enter the c value: 20
 
-]0;sp46@maroon21: ~/214/labs/05/clojure/src[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure/src[00m$ cd -
-/home/sp46/214/labs/05/clojure
-]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ cd -at split.clj[7Pd srclojure -m split
-To split a string, enter the string: hello 
-Enter the split position: - 0
+The first root is "-4.0" and the second root is "-5.0"
 
-The first part is "" and the second part is "hello "
+]0;sp46@gold16: ~/214/projects/05/clojure[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure[00m$ clojure -m roots
+To compute the roots of the quadratic formula 
+y = ax^2 + bx + c, 
+enter the a value:0
+Enter the b value: 4
+Enter the c value: 3
+The coefficent of x^2 is a zero
+]0;sp46@gold16: ~/214/projects/05/clojure[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure[00m$ clojure -m roots
+To compute the roots of the quadratic formula 
+y = ax^2 + bx + c, 
+enter the a value:1
+Enter the b value: -3
+Enter the c value: 4
+The discriminatnt (b^2 - 4ac) is negative
+]0;sp46@gold16: ~/214/projects/05/clojure[01;32msp46@gold16[00m:[01;34m~/214/projects/05/clojure[00m$ exit
 
-]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ clojure -m split
-To split a string, enter the string: hello
-Enter the split position: 3
-
-The first part is "hel" and the second part is "lo"
-
-]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ clojure -m split
-To split a string, enter the string: hello
-Enter the split position: 5
-
-The first part is "hello" and the second part is ""
-
-]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ exit
-
-Script done on 2020-03-06 14:46:13-0500
+Script done on 2020-03-12 20:44:43-0400

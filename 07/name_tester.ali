@@ -1,6 +1,5 @@
 V "GNAT Lib v7"
 M P W=b
-A -gnata
 P SS ZX
 
 RN
@@ -9,10 +8,10 @@ RV NO_SECONDARY_STACK
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U name_tester%b		name_tester.adb		61244b70 NE OO SU IL
+U name_tester%b		name_tester.adb		e6bf7755 NE OO SU IL
 W ada%s			ada.ads			ada.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-W system.assertions%s	s-assert.adb		s-assert.ali
 W system.concat_5%s	s-conca5.adb		s-conca5.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
@@ -25,9 +24,8 @@ D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
 D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
 D interfac.ads		20160502101001 5ab55268 interfaces%s
 D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
-D name_tester.adb	20200331130934 5949bea4 name_tester%b
+D name_tester.adb	20200409143112 ded28281 name_tester%b
 D system.ads		20170510173650 4635ec04 system%s
-D s-assert.ads		20140225151544 cd8d2c94 system.assertions%s
 D s-conca5.ads		20140225151544 875e432e system.concat_5%s
 D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
 D s-exctab.ads		20140225151139 54135002 system.exception_table%s
@@ -45,29 +43,49 @@ X 1 ada.ads
 16K9*Ada 20e8 10|7r6 7r23
 X 6 a-textio.ads
 49K13*Text_IO 471e16 10|7w10 7r27
-166U14*New_Line 10|112s16 113s30
-242U14*Put 10|99s7 113s4
+166U14*New_Line 10|188s16 202s4 206s16 207s30
+242U14*Put 10|102s7 165s7 169s7 173s7 207s4
+249U14*Get_Line 10|166s7 170s7 174s7
 X 10 name_tester.adb
-9U11*name_tester 9b11 115l5 115t16
-12N3 NAME_SIZE 17r46
-15R8 name 18e15 20r11 33r31 50r34 62r35 73r33 85r37 97r30
-17a7 MyFirst{string} 37m13 52r22 87r22 99r20
-17a16 MyMiddle{string} 38m13 64r22 87r46 99r44
-17a26 MyLast{string} 39m13 75r22 87r71 99r69
-20r3 aName{15R8} 104m9 106r28 107r29 108r27 109r31 112r8
-33U13 Init 33b13 33<18 34>18 34>25 34>33 40l7 40t11 104s4
-33r18 TheName{15R8} 37m5 38m5 39m5
-34a18 First{string} 37r24
-34a25 Middle{string} 38r25
-34a33 Last{string} 39r23
-50V12 getFirst{string} 50b12 50>21 53l8 53t16 106s19
-50r21 TheName{15R8} 52r14
-62V12 getMiddle{string} 62b12 62>22 65l8 65t17 107s19
-62r22 TheName{15R8} 64r14
-73V12 getLast{string} 73b12 73>20 76l8 76t15 108s19
-73r20 TheName{15R8} 75r14
-85V12 getFullName{string} 85b12 85>24 88l8 88t19 109s19
-85r24 TheName{15R8} 87r14 87r38 87r63
-97U14 Put 97b14 97>18 100l8 100t11 112s4
-97r18 TheName{15R8} 99r12 99r36 99r61
+9U11*name_tester 9b11 209l5 209t16
+12N3 NAME_SIZE 17r46 24r37
+15R8 name 18e15 20r11 36r31 53r34 65r35 76r33 88r37 100r30 116r35 128r36
+. 139r34 151r30 163r34
+17a7 MyFirst{string} 40m13 55r22 90r22 102r20 118m15 153r45 167m15
+17a16 MyMiddle{string} 41m13 67r22 90r46 102r44 130m15 153r69 153r86 171m15
+17a26 MyLast{string} 42m13 78r22 90r71 102r69 141m15 153r22 175m15
+20r3 aName{15R8} 179m9 181r28 182r29 183r27 184r31 186r24 188r8 190m13 191m14
+. 192m12 194r28 195r29 196r27 197r31 199r24 201r8 203m13 204r31 206r8
+23i4 charsRead{natural} 166m23 170m24 174m22
+24a4 first{string} 166m16 167r26
+24a11 middle{string} 170m16 171r27
+24a19 last{string} 174m16 175r25
+36U13 Init 36b13 36<18 37>18 37>25 37>33 43l7 43t11 179s4
+36r18 TheName{15R8} 40m5 41m5 42m5
+37a18 First{string} 40r24
+37a25 Middle{string} 41r25
+37a33 Last{string} 42r23
+53V12 getFirst{string} 53b12 53>21 56l8 56t16 181s19 194s19
+53r21 TheName{15R8} 55r14
+65V12 getMiddle{string} 65b12 65>22 68l8 68t17 182s19 195s19
+65r22 TheName{15R8} 67r14
+76V12 getLast{string} 76b12 76>20 79l8 79t15 183s19 196s19
+76r20 TheName{15R8} 78r14
+88V12 getFullName{string} 88b12 88>24 91l8 91t19 184s19 197s19 204s19
+88r24 TheName{15R8} 90r14 90r38 90r63
+100U14 Put 100b14 100>18 103l8 103t11 188s4 201s4 206s4
+100r18 TheName{15R8} 102r12 102r36 102r61
+116U13 setFirst 116b13 116<22 116>41 119l8 119t16 190s4
+116r22 TheName{15R8} 118m7
+116a41 NewFirst{string} 118r26
+128U13 setMiddle 128b13 128<23 128>42 131l8 131t17 191s4
+128r23 TheName{15R8} 130m7
+128a42 NewMiddle{string} 130r27
+139U13 setLast 139b13 139<21 139>40 142l8 142t15 192s4
+139r21 TheName{15R8} 141m7
+139a40 NewLast{string} 141r25
+151V12 lfmi{string} 151b12 151>17 154l8 154t12 186s19 199s19
+151r17 TheName{15R8} 153r14 153r37 153r61 153r78
+163U12 readName 163b12 163<21 176l8 176t16 203s4
+163r21 TheName{15R8} 167m7 171m7 175m7
 

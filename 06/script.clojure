@@ -1,113 +1,105 @@
-Script started on 2020-03-17 00:39:54-0400
-]0;sp46@maroon30: ~/214/labs/06/clojure[01;32msp46@maroon30[00m:[01;34m~/214/labs/06/clojure[00m$ cd   src
-]0;sp46@maroon30: ~/214/labs/06/clojure/src[01;32msp46@maroon30[00m:[01;34m~/214/labs/06/clojure/src[00m$ a cat average.clj
-;; average.clj "test-drives" function average().
+Script started on 2020-04-01 00:37:23-0400
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ cd src
+]0;sp46@gold09: ~/214/projects/06/clojure/src[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure/src[00m$ cat array.clj
+;; array.clj "test-drives" function readArray() and printArray().
 ;;
-;; Output: the average of a sequence of numbers.
+;; Output: the values inside the array, which the user defines.
 ;;
-;; Usage: clojure -m average
+;; Usage: clojure -m array
 ;;
 ;; Begun by: Dr. Adams, CS 214 at Calvin College.
 ;; Completed by: Sinai Park(sp46)
-;; Date: March 16 2020 
+;; Date: March 20 2020 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(ns average)
+(ns array)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; sum() sums the values in a vector.       
-;; Receive: aVec, a vector of numbers.
-;; Return: the sum of the values in aVec.
+;; readArray() asks the user for input size of arrays to fill in.       
+;; Receive: anArray, an empty Vector array type; size, Integer size of  array  
+;; Output: anArray is filled with the values from the user 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Replace this line with the definition of sum(); harder (recursive solution)
-(defn sum [aVec]
-  (if (vector? aVec)          ;if aVec is a vector
-    (if (empty? aVec)         ; if aVec is empty;
-      0.0                     ; return 0
-      (+ (peek aVec)          ;else peek the last value
-      (sum (pop aVec))        ;sum all the digits except the last value
-      ) 
+(defn readArray [anArray count size]
+  (println "Value of array: ")
+      (if (< count size)  ; check to make sure count is less than size of the array
+
+        (let 
+          [element (int (read))  ; read in the input from the user
+          theArray (conj anArray element) ]  ; append element to anArray
+
+          (readArray theArray (+ count 1) size) ; recursively call readArray
+        ) anArray
+    
     )
-  )
+    
 )
+  
 
 
-;; Replace this line with the definition of sum2(); easier way of summing up values
-(defn sum2 [aVec]
-  (if (vector? aVec)
-    (if (empty? aVec)
-      0.0
-        (reduce + aVec)         ;reduce returns the result of the combined value using operator 
-    )
-  )
-) 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; average() computes the average of a vector of numbers.
-;; Receive: aVec, a vector of numbers. 
-;; Return: the average of the numbers in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;s;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; printArray() prints out each element in the array to the user   
+;; Receive: anArray, a Vector array type with Floats in it already      
+;; Output: each element in anArray is printed for the user to see 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    
-;; Replace this line with the definition of average()
-(defn average [aVec]
-  (if (empty? aVec)
-     0.0
-  (/ (sum aVec) (count aVec))     ;divide the sum of the values in the array by the count of the vector 
-  )
+(defn printArray [anArray count_num]
+  (if (vector? anArray)   ; check to make sure anArray is a vector
+    (if (< count_num (count anArray))    ; if count is less than the length of the array
+      (let []
+        (print (anArray count_num))     ; output the element in the array to the user
+        (println)
+        (printArray anArray (+ count_num 1)) ; call printArray recursively
+      )
+   ) 
+   (println "is not a vector")  
+  ) 
 )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; main function to test functions sum() and average()
+;; main function to test functions readArray() and printArray()
 ;; Output: the sum and average of some test vectors.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defn -main []
-  (let
-    [ emptyVec []
-      testVec  [9.0 8.0 7.0 6.0]
+  (print "Enter the size of the array: ") (flush); prompt the user for the size of the array
+  (let 
+    [ new_array []
+      size (int (read))
+      result (readArray new_array 0 size)     ; call functions readArray() and printArray()
     ]
+  (do                
+    (printArray result 0))))
+]0;sp46@gold09: ~/214/projects/06/clojure/src[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure/src[00m$ cd -
+/home/sp46/214/projects/06/clojure
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ cd -at array.clj[7Pd srclojure -m array
+Enter the size of the array: 4
+Value of array: 
+7
+Value of array: 
+2
+Value of array: 
+4
+Value of array: 
+356
+Value of array: 
+7
+2
+4
+356
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m arrayd -[Klojure -m array
+0Enter the size of the array: 
+Value of array: 
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Enter the size of the array: 4 2
+Value of array: 
+536872
+Value of array: 
+5362
+Value of array: 
+536872
+5362
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ exit
 
-    (print "\nThe empty vec: " emptyVec) 
-    (print "\nThe test  vec: " testVec) 
-    (println "\n")
-
-    ;; Test sum()...
-    (printf "\nThe first sum is %.3f\n" (sum emptyVec))
-    (printf "The second sum is %.3f\n" (sum testVec))
-
-    ;; Test average()...
-    (printf "\nThe first average is %.3f\n" (average emptyVec))
-    (printf "The second average is %.3f\n" (average testVec))
-    (println "\n")
-
-    ;; Test sum2()...
-    (printf "\nThe first sum2 is %.3f\n" (sum2 emptyVec))
-    (printf "The second sum2 is %.3f\n" (sum2 testVec))
-    (println "\n")
-  )
-)
-
-]0;sp46@maroon30: ~/214/labs/06/clojure/src[01;32msp46@maroon30[00m:[01;34m~/214/labs/06/clojure/src[00m$ cd -
-/home/sp46/214/labs/06/clojure
-]0;sp46@maroon30: ~/214/labs/06/clojure[01;32msp46@maroon30[00m:[01;34m~/214/labs/06/clojure[00m$ clojure -m average
-
-The empty vec:  []
-The test  vec:  [9.0 8.0 7.0 6.0]
-
-
-The first sum is 0.000
-The second sum is 30.000
-
-The first average is 0.000
-The second average is 7.500
-
-
-
-The first sum2 is 0.000
-The second sum2 is 30.000
-
-
-]0;sp46@maroon30: ~/214/labs/06/clojure[01;32msp46@maroon30[00m:[01;34m~/214/labs/06/clojure[00m$ exit
-
-Script done on 2020-03-17 00:41:00-0400
+Script done on 2020-04-01 00:38:05-0400

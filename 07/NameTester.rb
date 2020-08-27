@@ -26,6 +26,27 @@ class Name
       puts ( fullName() )
       fullName()
    end
+
+
+   #shortcut function of all the "set[nameorder]" functions
+   attr_writer :first, :middle, :last
+
+   #function lfmi() prints the full name of a type Name in last, first, middile initial order
+   def lfmi()
+      return last + " " + first + " " + middle[0] 
+   end
+
+   #function readName() reads in first, middle, last names from user input
+   def readName()
+      puts ("Please enter the first name: ")
+      @first = gets.chomp
+      puts ("Please enter the middle name: ")
+      @middle = gets.chomp
+      puts ("Please enter the last name: ")
+      @last = gets.chomp
+   end
+
+
 end
 
 
@@ -37,6 +58,22 @@ def testName
    assert name.last == "Jones", "last failed"
    assert name.fullName == "John Paul Jones", "fullName failed"
    assert name.print == "John Paul Jones", "print failed"
+
+   name.first = "Nathan"
+   name.middle = "Yeol"
+   name.last = "Smith"
+
+   assert name.first == "Nathan", "first failed"
+   assert name.middle == "Yeol", "middle failed"
+   assert name.last == "Smith", "last failed"
+
+   assert name.fullName == "Nathan Yeol Smith", "fullname failed"
+   assert name.print == "Nathan Yeol Smith", "fullname failed"
+   assert name.lfmi == "Smith Nathan Y", "lfmi failed"
+
+   name.readName
+   assert name.fullName != "Nathan Yeol Smith", "readName failed"
+
    
    print "All tests passed!\n"
 end

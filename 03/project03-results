@@ -1,0 +1,404 @@
+Script started on 2020-02-25 16:26:24-0500
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ja  cat   javac -deprecation LetterGrade. 
+error: Class names, 'LetterGrade', are only accepted if annotation processing is explicitly requested
+1 error
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ javac -deprecation LetterGrade.java
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ cat LetterGrade.java
+/*LetterGrade.java is a driver for function letterGrade()
+ *
+ * Created by Sinai Park(sp46)
+ * Date: Feb 24 2020
+ * ****************************************************/
+
+import java.util.Scanner;
+
+public class LetterGrade{
+
+public static void main(String[] args) {
+   Scanner keyboard = new Scanner(System.in);
+
+   System.out.println("\nEnter your integer score: ");	//Prompt for an integer score from user
+
+
+   String number = keyboard.next();          // read the number as a string
+   int average = Integer.parseInt(number);	//convert the score to int
+   System.out.println(letterGrade(average)); // display its code
+   }
+
+
+   /***************************************************************
+    * letterGrade() converts an integer number into a letter grade.
+    *
+    * Receive: average value,  a integer 
+    * PRE: integers is from 0 to 100, (assuming 90-100 is A, 80-90 is a B, etc).
+    * Return: the letter grade alphabet code corresponding to the integer.
+    */
+
+    public static String letterGrade(int average)
+    {
+       switch (average / 10)
+       {
+         //90-100 is an A
+          case 10: case 9:
+             return "A";
+         //80-89 is B 
+          case 8:
+             return "B";
+         //70-79 is C 
+          case 7:
+             return "C";
+          case 6:
+         //60-69 is D
+             return "D";
+         //0-59 is F
+          default:
+             return "F";
+       }
+    }
+   }
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./  j java LetterGrade
+
+Enter your integer score: 
+36
+F
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ java LetterGrade
+
+Enter your integer score: 
+62
+D
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ java LetterGrade
+
+Enter your integer score: 
+77
+C
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ java LetterGrade
+
+Enter your integer score: 
+81
+B
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ java LetterGrade
+
+Enter your integer score: 
+100
+A
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ exit
+
+Script done on 2020-02-25 16:27:19-0500
+Script started on 2020-02-25 16:03:28-0500
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ gnatmake - L letter_frea    grades.aad  db
+gnatmake: "letter_grades" up to date.
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ c gnatmake letter_grades.adb[11P./letter_gradescat letter_grades.adb
+-- letter_grades.adb converts integer values to corresponding letter grades.
+--
+-- Created by: Sinai Park(sp46)
+-- Date: Feb 24, 2020
+--
+-- Input: integer value, a integer
+-- Precondition: value is a positive integer from 0 to 100
+-- Output: The letter grade (A, B, C, D, F) .
+----------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use  Ada.Text_IO, Ada.Integer_Text_IO;
+
+procedure letter_grades is
+
+   average : integer;   
+  
+
+   -- function letterGrade
+   -- Receive: average, an integer
+   -- Precondition: average is any integer from 0 to 100
+   -- Return: the string value A, B, C, D, or F
+   
+   function letterGrade(average: integer) return String is
+
+	begin
+		case average/10 is
+		
+			when 10 | 9 => return "A";    --return A when score/10 is 10 or 9
+			when 8  => return "B";		  --return B when score/10 is 8
+			when 7 => return "C";         --return C when score/10 is 7
+			when 6 => return "D";         --return D when score/10 is 6
+			when others => return "F";    --return F when score/10 is below 5
+
+		end case;
+	end letterGrade;
+
+begin                                          
+   Put("Enter your average number value: ");           -- Prompt for input
+   get(average);                                   -- Input
+   Put( letterGrade(average) );                       -- Convert and output
+   New_Line;
+end letter_grades;
+
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ cat letter_grades.adb[5@gnatmake letter_grades.adb[11P./letter_grades
+Enter your average number value: 32
+F
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 61
+D
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 77
+C
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 89
+B
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 90
+A
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ exit
+
+Script done on 2020-02-25 16:03:58-0500
+ letter_grades.adb
+x86_64-linux-gnu-gnatbind-7 -x letter_grades.ali
+x86_64-linux-gnu-gnatlink-7 letter_grades.ali
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ script sci ript.ada
+Script started, file is script.ada
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ c ./letter_gradescat letter_grades.adb
+-- letter_grades.adb converts integer values to corresponding letter grades.
+--
+-- Created by: Sinai Park(sp46)
+-- Date: Feb 24, 2020
+--
+-- Input: integer value, a integer
+-- Precondition: value is a positive integer from 0 to 100
+-- Output: The letter grade (A, B, C, D, F) .
+----------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use  Ada.Text_IO, Ada.Integer_Text_IO;
+
+procedure letter_grades is
+
+   average : integer;   
+  
+
+   -- function letterGrade
+   -- Receive: average, an integer
+   -- Precondition: average is any integer from 0 to 100
+   -- Return: the string value A, B, C, D, or F
+   
+   function letterGrade(average: integer) return String is
+
+	begin
+		case average/10 is
+		
+			when 10 | 9 => return "A";    --return A when score/10 is 10 or 9
+			when 8  => return "B";		  --return B when score/10 is 8
+			when 7 => return "C";         --return C when score/10 is 7
+			when 6 => return "D";         --return D when score/10 is 6
+			when others => return "F";    --return F when score/10 is below 5
+
+		end case;
+	end letterGrade;
+
+begin                                          
+   Put("Enter your average number value: ");           -- Prompt for input
+   get(average);                                   -- Input
+   Put( letterGrade(average) );                       -- Convert and output
+   New_Line;
+end letter_grades;
+
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ cat letter_grades.adb[6P./letter_grades
+Enter your average number value: 34
+F
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 61
+D
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 79
+C
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades
+Enter your average number value: 88
+B
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ./letter_grades91  
+Enter your average number value: 90
+A
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ exit
+Script done, file is script.ada
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ [K]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ [K]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ [K]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ [K]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ script sa  script.ada
+Script started, file is script.ada
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ gnatmake - L letter_frea    grades.aad  db
+gnatmake: "letter_grades" up to date.
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ c gnatmake letter_grades.adb[11P./letter_gradescat letter_grades.adb
+-- letter_grades.adb converts integer values to corresponding letter grades.
+--
+-- Created by: Sinai Park(sp46)
+-- Date: Feb 24, 2020
+--
+-- Input: integer value, a integer
+-- Precondition: value is a positive integer from 0 to 100
+-- Output: The letter grade (A, B, C, D, F) .
+----------------------------------------------------
+
+with Ada.Text_IO, Ada.Integer_Text_IO;
+use  Ada.Text_IO, Ada.Integer_Text_IO;
+
+procedure letter_grades is
+
+   average : integer;   
+  
+
+   -- function letterGrade
+   -- Receive: average, an integer
+   -- Precondition: average is any integer from 0 to 100
+   -- Return: the string value A, B, C, D, or F
+   
+   function letterGrade(average: integer) return String is
+
+	begin
+		case average/10 is
+		
+			when 10 | 9 => return "A";    --return A when score/10 is 10 or 9
+			when 8  => return "B";		  --return B when score/10 is 8
+			when 7 => return "C";         --return C when score/10 is 7
+			when 6 => return "D";         --return D when score/10 is 6
+			when others => return "F";    --return F when score/10 is below 5
+
+		end case;
+	end letterGrade;
+
+begin                                          
+   Put("Enter your average number value: ");           -- Prompt for input
+   get(average);                                   -- Input
+   Put( letterGrade(average) );                       -- Convert and output
+   New_Line;
+end letter_grades;
+
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ cat letter_grades.adb[5@gnatmake letter_grades.adb[11P./letter_grades
+Enter yoScript started on 2020-02-25 16:23:40-0500
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ cat     cd src
+]0;sp46@gold01: ~/214/projects/03/clojure/src[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure/src[00m$ cat L letter_grades.l clj
+;;;; letter_grades.clj is a driver for function yearCode.
+;;;;
+;;;; Input:  average value,  a integer, from 0 to 100
+;;;; Output: the letter grade alphabet code corresponding to the integer.
+;;;;         (assuming 90-100 is A, 80-90 is a B, etc).
+;;;;
+;;;; Usage: clojure -m letter_grades
+;;;;
+;;;; Created by: Sinai Park(sp46)
+;;;; Date: Feb 25, 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns letter_grades)                    ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; letterGrade() returns letter grade alphabet code corresponding to the integer.
+;;; Receive: average value, an integer
+;;; Precondition: integers from 0 to 100, (assuming 90-100 is A, 80-90 is a B, etc).
+;;; Return: the letter grade corresponding to integer.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn letterGrade [average]
+   (cond 
+      (> average 89) "A"  ;;;;90-100 is an A
+      (> average 79) "B"  ;;;;80-89 is B 
+      (> average 69) "C"  ;;;;70-79 is C
+      (> average 59) "D"  ;;;;60-69 is D
+   :else "F"              ;;;;0-59 is F
+   )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function -main() test-drives our letterGrade() function.
+;;; Input: year: average value, an integer
+;;; Output: the letter grade corresponding to integer.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+ (print "\nEnter your average score: ") (flush)
+ (let
+    [ average (Integer/parseInt(read-line)) ] ; read average (an integer)
+    (println (letterGrade average) "\n")      ; display its code
+ )
+)]0;sp46@gold01: ~/214/projects/03/clojure/src[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure/src[00m$ cd - -
+/home/sp46/214/projects/03/clojure
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ cd -at letter_grades.cljd src[Klojure -m letter_grades
+
+Enter your average score: 37
+F 
+
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ clojure -m letter_grades
+6
+Enter your average score: 98   ^[[A^[[A^[[D^[[B                6
+F 
+
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ clojure -m letter_grades
+
+Enter your average score: 71
+C 
+
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ clojure -m letter_grades
+6
+Enter your average score: 9
+D 
+
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ clojure -m letter_grades
+99
+Enter your average score: 
+A 
+
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ clojure -m letter_grades
+
+Enter your average score: 81
+B 
+
+]0;sp46@gold01: ~/214/projects/03/clojure[01;32msp46@gold01[00m:[01;34m~/214/projects/03/clojure[00m$ exit
+
+Script done on 2020-02-25 16:24:39-0500
+Script started on 2020-02-25 16:10:15-0500
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ cat letter_grades.rb
+#! /usr/bin/ruby
+# letter_grades.rb translates an integer average to a letter grade
+# Created by: Sinai Park(sp46)
+# Date: Feb 25, 2020
+################################################################
+
+# Input:  average value,  a integer 
+# Precondition: itegers from 0 to 100, (assuming 90-100 is A, 80-90 is a B, etc).
+# Output: the letter grade alphabet code corresponding to the integer.
+
+def letterGrade average
+   case (average/10)
+   when 10 , 9 
+      return "A" #90-100 is an A
+   when 8 
+      return "B"      #80-89 is B 
+   when 7 
+      return "C"      #70-79 is C 
+   when 6 
+      return "D"      #60-69 is D 
+   else 
+      return "F"        #0-59 is an F
+   end
+end
+
+if __FILE__ == $0
+   print "Enter the average number: "
+   average = gets.chomp.to_i
+   print "The letter grade is: "
+   puts letterGrade(average)
+end
+
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ cat letter_grades.rb[1@ruby letter_grades.rb
+Enter the average number: 34
+The letter grade is: F
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ruby letter_grades.rb
+Enter the average number: 2 57
+The letter grade is: F
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ruby letter_grades.rb
+Enter the average number: 67
+The letter grade is: D
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ruby letter_grades.rb
+Enter the average number: 79
+The letter grade is: C
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ruby letter_grades.rb
+Enter the average number: 81
+The letter grade is: B
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ ruby letter_grades.rb
+Enter the average number: 93
+The letter grade is: A
+]0;sp46@gold01: ~/214/projects/03[01;32msp46@gold01[00m:[01;34m~/214/projects/03[00m$ exit
+
+Script done on 2020-02-25 16:10:50-0500

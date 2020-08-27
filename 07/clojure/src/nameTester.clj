@@ -77,6 +77,74 @@
   (print (getFullName aName) )
 )
 
+
+
+; PROJECT 07 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setFirst() changes the first name of a Name object.
+;;; Receive: aName, a Name.
+;;; Return: the changed firstName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn setFirst[aName newFirst]
+  (->Name newFirst (:middleName aName) (:lastName aName))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setMiddle() changes the middle name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the middleName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn setMiddle[aName newMiddle]
+  (->Name (:firstName aName) newMiddle (:lastName aName))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setLast() changes the last name of a name object.
+;;; Receive: aName, a Name. 
+;;; Return: the lastName string in aName.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn setLast[aName newLast]
+  (->Name (:firstName aName) (:middleName aName) newLast)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; lfmi() returns a full name in L-F-M order. 
+;;; Receive: aName, a Name. 
+;;; Return: lastName, firstName, middleName,
+;;;           separated by spaces. 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn lfmi[^Name aName]
+  (str (getLast aName) " " (getFirst aName) " " (subs (getMiddle aName) 0 1) )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; readName() creates a name from user input. 
+;;; Receive: aName, a Name. 
+;;; Return: none 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+(defn readName[^Name aName]
+  (print "Please enter the first name: ") (flush)
+  (let
+    [firstName (read-line)]
+      (print "Please enter the middle name: ") (flush)
+      (let
+        [ middleName (read-line)]
+          (print "Please enter the last name: ") (flush)
+          (let
+            [lastName (read-line)]
+             (->Name firstName middleName lastName)
+          )
+      )
+  )
+
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; A simple driver to test our Name functions. 
 ;;; Output: the result of testing our Name functions.
@@ -85,9 +153,8 @@
   (let
     [                                          ; 3 ways to construct an object:
        name1 (make-Name "John" "Paul" "Jones")  ; -using our "make-" constructor
-       name2 (->Name "Jane" "Penelope" "Jones") ; -invoking constructor directly
-                                               ; -mapping field-names to values;      
-      name3 (map->Name {:lastName "Jones" :firstName "Jinx" :middleName "Joy"})
+       name2 (->Name "Jane" "Penelope" "Jones") ; -invoking constructor directly                                                   
+       name3 (map->Name {:lastName "Jones" :firstName "Jinx" :middleName "Joy"}) ; -mapping field-names to values; 
     ]
     ;; ----- SECTION 1 -----
     (println)
@@ -96,6 +163,23 @@
     (assert (= (getMiddle name1) "Paul") "getMiddle(1) failed")
     (assert (= (getLast name1) "Jones") "getLast(1) failed")
     (assert (= (getFullName name1) "John Paul Jones") "toStgetFullNamering(1) failed")
+    (assert (= (lfmi name1) "Jones John P") "lfmi(1) failed")
+    (printName name1) (println)
+
+    (let 
+      [name1 (setFirst name1 "Gray")
+       name1 (setMiddle name1 "Brown") 
+       name1 (setLast name1 "Smith")
+      ]
+
+    (assert (= (getFirst name1) "Gray") "getFirst(1) failed")
+    (assert (= (getMiddle name1) "Brown") "getMiddle(1) failed")
+    (assert (= (getLast name1) "Smith") "getLast(1) failed")
+    (assert (= (getFullName name1) "Gray Brown Smith") "toStgetFullNamering(1) failed")
+    (printName name1) (println)
+    (assert (= (lfmi name1) "Smith Gray B") "lfmi(1) failed")
+
+    (let [name1 (readName name1)]
     (printName name1) (println)
     ;; ----- SECTION 2 -----
     (println)
@@ -114,6 +198,7 @@
     (assert (= (getFullName name3) "Jinx Joy Jones") "getFullName(3) failed")
     (printName name3) (println)
 
+
     (println "\nAll tests passed!\n")
-  )
-)
+  ))
+))

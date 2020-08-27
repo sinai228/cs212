@@ -1,0 +1,664 @@
+Script started on 2020-03-18 19:29:26-0400
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.java
+/* Array.java is a driver for method printarray().
+ *
+ * Started by: Prof. Adams, for CS 214 at Calvin College
+ *
+ * Student Name: Sinai Park(sp46)
+ * Date: March 18 2020
+ *
+ * Prompts the user for a input size of an array
+ * prints the array, and 
+ * Precondition: theArray, is an array of double values.
+ * Output: the average of the numbers in theArray.
+ ***************************************************************/
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Array
+{
+  public static void main(String[] args) {
+
+      
+  // Create a new Scanner for user input
+	Scanner keyboard = new Scanner(System.in);
+	System.out.println("Enter the size of the array: ");
+	
+	// Read in the size of the array from the user
+	int size = keyboard.nextInt();
+
+	// Create an array with the user input size
+	double[] anArray = new double[size];
+
+	// Call readArray to fill the array, printArray to output the array
+	readArray(anArray, size, keyboard);
+	printArray(anArray, size, keyboard);
+  }
+  
+
+  /* printArray() is a method that prints all the values in the array, with a new line
+   * in an array of doubles.
+   * Receive: anArray, an array of doubles.
+   * Return: the list of the values in anArray.
+   ************************************************************/
+  public static void printArray(double[] anArray, int size, Scanner keyboard)
+  {
+    System.out.println("The values inside the array are: ");
+    //resulting array values
+    for (int i = 0; i < size; i++){
+      System.out.println(anArray[i]);
+    }
+  }
+
+  /* readArray() is a method that fills the values inside the array with given input values
+   * in an array.
+   * Receive: anArray, an array of doubles.
+   * Return: void, or anArray with filled-in values
+   **************************************************************/
+  public static void readArray(double[] anArray, int size, Scanner keyboard)
+  {
+    System.out.println("Please enter " + size + " values for the array: ");
+
+    // Fill in values of the theArray with given doubles
+    for (int i = 0; i < size; i++) {
+      anArray[i] = keyboard.nextDouble();  
+    }
+  }
+}
+
+
+
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.javascript.java script.ada script.clojure scriptt.ruby > lab06-results[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ [29Pscript script.ruby
+[K[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ script script.ruby[3Pruby average.rbls[Kruby average.rbscript script.rubycat script.java script.ada script.clojure scriptt.ruby > lab06-results[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.java[K
+[K[A]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat Array.java[Kjavac d -deprecation Array.java
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ java Array
+Enter the size of the array: 
+5 4
+Please enter 4 values for the array: 
+9
+8
+7
+6
+The values inside the array are: 
+9.0
+8.0
+7.0
+6.0
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ 3 java Arrayc -deprecation Array.java
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ javac -deprecation Array.java Array[Kc -deprecation Array.java Array[K
+Enter the size of the array: 
+0
+Please enter 0 values for the array: 
+The values inside the array are: 
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ java Array
+Enter the size of the array: 
+3
+Please enter 3 values for the array: 
+6236
+8625
+0005732
+The values inside the array are: 
+6236.0
+8625.0
+5732.0
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ exit
+
+Script done on 2020-03-18 19:30:26-0400
+Script started on 2020-03-25 03:51:03-0400
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ gnatmake arrays
+gnatmake: "arrays" up to date.
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ ,.  ./arrays
+Please give the size of the array: 0
+
+Please enter the array doubles: 
+
+Here are the elements in the array: 
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ ./arrays
+Please give the size of the array: 43626
+
+Please enter the array doubles: 
+
+raised ADA.IO_EXCEPTIONS.END_ERROR : a-textio.adb:506
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ script script.ada
+Script started, file is script.ada
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ gnatmake arrays
+gnatmake: "arrays" up to date.
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ gnatmake arrays[7P./arrays
+Please give the size of the array: - 0
+
+Please enter the array doubles: 
+
+Here are the elements in the array: 
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ ./arrays
+Please give the size of the array: 3
+
+Please enter the array doubles: 
+673
+245
+0
+
+Here are the elements in the array: 
+ 6.73000E+02
+ 2.45000E+02
+ 0.00000E+00
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ ./arrays
+Please give the size of the array: 6
+
+Please enter the array doubles: 
+0
+1
+2
+3
+4
+5
+
+Here are the elements in the array: 
+ 0.00000E+00
+ 1.00000E+00
+ 2.00000E+00
+ 3.00000E+00
+ 4.00000E+00
+ 5.00000E+00
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ exit
+Script done, file is script.ada
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ cd clojure
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cd src      clojr ure -ma    array
+Syntax error compiling at (array.clj:22:7).
+Unable to resolve symbol: vectorp in this context
+
+Full report at:
+/tmp/clojure-6474613420756555407.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cd -
+/home/sp46/214/projects/06
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ cd -
+/home/sp46/214/projects/06/clojure
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cd --
+]0;sp46@maroon34: ~[01;32msp46@maroon34[00m:[01;34m~[00m$ cd 21/ 4/[rok     /projects/0 05/clojure
+]0;sp46@maroon34: ~/214/projects/05/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure[00m$ cd src
+]0;sp46@maroon34: ~/214/projects/05/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure/src[00m$ ls
+roots.clj
+]0;sp46@maroon34: ~/214/projects/05/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure/src[00m$ cat roots.clj
+;;;; roots.clj splits a string into two substrings.
+;;;;
+;;;; Input: equation(a, b, c) - the quadratic function coefficients to be evaluated
+;;;; 		        
+;;;; Output:   true ---- roots, calculated by the quadratic formula
+;;;;           false --- if b^2 - 4ac is (-) or if a is 0
+;;;;
+;;;; Usage: clojure -m root
+;;;;
+;;;; Begun by: Dr. Adams, for CS 214 at Calvin College.
+;;;; Completed by: Sinai Park(sp46)
+;;;; Date: March 12 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns roots)      ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; rootcalc()   /* rootcalc() finds the roots of a quadratic equation
+;;; Receive: 	equation - the quadratic function values a, b, c to be evaluated
+;;; 	
+;;; PRE: a, b, c are integers
+;;;      the discriminant is not less than zero
+;;;
+;;; Returns:   true ---- roots, calculated by the quadratic formula
+;;;            false --- if b^2 - 4ac is (-) or if a is 0
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Replace this line with the definition of rootcalc()
+(defn rootcalc [a, b, c,]
+    (if (= a 0)
+    ;;start if a is equal to zero: invalid rooots
+    (do
+      (print "The coefficent of x^2 is a zero\n")
+      (let [root1 0.0 
+            root2 0.0 
+            isTrue false]   ;;default values
+      (vector root1 root2 isTrue))
+    )
+    ;;else if a is not equal to 0, compute the roots
+    (do (let [arg (- (* b b) (* 4 (* a c)))]
+      (if (>= arg 0)
+        (do
+          (let [root1 (/ (+ (- 0 b) (Math/sqrt arg)) (* 2 a ))] 
+          (let [root2 (/ (- (- 0 b) (Math/sqrt arg)) (* 2 a ))]
+          (let [isTrue true]
+          (vector root1 root2 isTrue))))
+        )
+        ;;;else if discriminant is less than 0; roots are unreal numbers
+        (do 
+          (print "The discriminatnt (b^2 - 4ac) is negative\n")
+          (let [root1 0.0 root2 0.0 isTrue false]
+          (vector root1 root2 isTrue))
+        ) 
+      )
+    ))
+  )
+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; main function
+;;; Input: a, b, c, values of quadratic function
+;;; Output: the roots of the function, if real numbers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (print "To compute the roots of the quadratic formula \ny = ax^2 + bx + c, \nenter the a value:") (flush)
+  (let
+    [ a (read) ]                      ; read the string
+    (print "Enter the b value: ") (flush)
+    (let 
+      [ b (read) ]                 ; read the split pos.
+      (print "Enter the c value: ") (flush)
+      (let 
+        [ c (read)  
+        result (rootcalc a b c)                  ; compute the roots of the function
+        root1 (get result 0)                     ; retrieve the first root from first
+        root2 (get result 1)                     ; retrieve the second root
+        isTrue (get result 2)]
+      (if (= isTrue true)                                         ; display the roots
+      (do 
+        (printf (str "\nThe first root is \"%s\" and" 
+                    " the second root is \"%s\"\n\n")
+                       root1 root2))
+      (do (print "")))
+     )
+    )
+  )
+)
+]0;sp46@maroon34: ~/214/projects/05/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure/src[00m$ cd--
+WARNING:root:could not open file '/etc/apt/sources.list'
+
+cd--: command not found
+]0;sp46@maroon34: ~/214/projects/05/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure/src[00m$ cd -
+/home/sp46/214/projects/05/clojure
+]0;sp46@maroon34: ~/214/projects/05/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure[00m$ cd -
+/home/sp46/214/projects/05/clojure/src
+]0;sp46@maroon34: ~/214/projects/05/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/projects/05/clojure/src[00m$ cd --
+]0;sp46@maroon34: ~[01;32msp46@maroon34[00m:[01;34m~[00m$ cd 214/labs/06
+]0;sp46@maroon34: ~/214/labs/06[01;32msp46@maroon34[00m:[01;34m~/214/labs/06[00m$ cat   ls
+[0m[01;32maverage[0m      Average.class  average.rb     script.ada      script.ruby
+average.adb  Average.java   [01;34mclojure[0m        script.clojure
+average.ali  average.o      lab06-results  script.java
+]0;sp46@maroon34: ~/214/labs/06[01;32msp46@maroon34[00m:[01;34m~/214/labs/06[00m$ cd clojure
+]0;sp46@maroon34: ~/214/labs/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/labs/06/clojure[00m$ cd src
+]0;sp46@maroon34: ~/214/labs/06/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/labs/06/clojure/src[00m$ ls average.clj              cat average.clj
+;; average.clj "test-drives" function average().
+;;
+;; Output: the average of a sequence of numbers.
+;;
+;; Usage: clojure -m average
+;;
+;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;; Completed by: Sinai Park(sp46)
+;; Date: March 16 2020 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns average)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sum() sums the values in a vector.       
+;; Receive: aVec, a vector of numbers.
+;; Return: the sum of the values in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Replace this line with the definition of sum(); harder (recursive solution)
+(defn sum [aVec]
+  (if (vector? aVec)          ;if aVec is a vector
+    (if (empty? aVec)         ; if aVec is empty;
+      0.0                     ; return 0
+      (+ (peek aVec)          ;else peek the last value
+      (sum (pop aVec))        ;sum all the digits except the last value
+      ) 
+    )
+  )
+)
+
+
+;; Replace this line with the definition of sum2(); easier way of summing up values
+(defn sum2 [aVec]
+  (if (vector? aVec)
+    (if (empty? aVec)
+      0.0
+        (reduce + aVec)         ;reduce returns the result of the combined value using operator 
+    )
+  )
+) 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; average() computes the average of a vector of numbers.
+;; Receive: aVec, a vector of numbers. 
+;; Return: the average of the numbers in aVec.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   
+;; Replace this line with the definition of average()
+(defn average [aVec]
+  (if (empty? aVec)
+     0.0
+  (/ (sum aVec) (count aVec))     ;divide the sum of the values in the array by the count of the vector 
+  )
+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; main function to test functions sum() and average()
+;; Output: the sum and average of some test vectors.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (let
+    [ emptyVec []
+      testVec  [9.0 8.0 7.0 6.0]
+    ]
+
+    (print "\nThe empty vec: " emptyVec) 
+    (print "\nThe test  vec: " testVec) 
+    (println "\n")
+
+    ;; Test sum()...
+    (printf "\nThe first sum is %.3f\n" (sum emptyVec))
+    (printf "The second sum is %.3f\n" (sum testVec))
+
+    ;; Test average()...
+    (printf "\nThe first average is %.3f\n" (average emptyVec))
+    (printf "The second average is %.3f\n" (average testVec))
+    (println "\n")
+
+    ;; Test sum2()...
+    (printf "\nThe first sum2 is %.3f\n" (sum2 emptyVec))
+    (printf "The second sum2 is %.3f\n" (sum2 testVec))
+    (println "\n")
+  )
+)
+
+]0;sp46@maroon34: ~/214/labs/06/clojure/src[01;32msp46@maroon34[00m:[01;34m~/214/labs/06/clojure/src[00m$ cd --
+]0;sp46@maroon34: ~[01;32msp46@maroon34[00m:[01;34m~[00m$ cd 214/projects/06
+]0;sp46@maroon34: ~/214/projects/06[01;32msp46@maroon34[00m:[01;34m~/214/projects/06[00m$ cd clojure 
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cl  cd  clojure -m array
+Syntax error compiling at (array.clj:22:7).
+Unable to resolve symbol: theArray in this context
+
+Full report at:
+/tmp/clojure-9626419342255384968.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error macroexpanding clojure.core/defn at (array.clj:21:1).
+anArray - failed: vector? at: [:fn-tail :arity-n :bodies :params] spec: :clojure.core.specs.alpha/param-list
+(anArray count size) - failed: vector? at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
+
+Full report at:
+/tmp/clojure-7182465448830355103.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error compiling at (array.clj:21:1).
+Unable to resolve symbol: defun in this context
+
+Full report at:
+/tmp/clojure-12973284807834971749.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error macroexpanding clojure.core/defn at (array.clj:21:1).
+anArray - failed: vector? at: [:fn-tail :arity-n :bodies :params] spec: :clojure.core.specs.alpha/param-list
+(anArray count size) - failed: vector? at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
+
+Full report at:
+/tmp/clojure-10490326589443691590.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error macroexpanding clojure.core/defn at (array.clj:21:1).
+anArray - failed: vector? at: [:fn-tail :arity-n :bodies :params] spec: :clojure.core.specs.alpha/param-list
+(anArray count size) - failed: vector? at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
+
+Full report at:
+/tmp/clojure-11672268469377872996.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array[5Pd clojure lojure -m array
+Syntax error compiling at (array.clj:24:3).
+Unable to resolve symbol: progn in this context
+
+Full report at:
+/tmp/clojure-99949578710444516.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error compiling at (array.clj:25:4).
+Unable to resolve symbol: setq in this context
+
+Full report at:
+/tmp/clojure-7826777350901377126.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error compiling at (array.clj:25:4).
+Unable to resolve symbol: setq in this context
+
+Full report at:
+/tmp/clojure-291000543566174161.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array[5Pd clojure 
+bash: cd: clojure: No such file or directory
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cd clojure 
+bash: cd: clojure: No such file or directory
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cd clojure lojure -m array
+Syntax error macroexpanding clojure.core/let at (array.clj:25:4).
+(element (read)) - failed: vector? at: [:bindings] spec: :clojure.core.specs.alpha/bindings
+
+Full report at:
+/tmp/clojure-10469421126778056507.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ cd pp  --\-[1P-[K[1P-[1P-[1P-clojure -m array
+Syntax error compiling at (array.clj:39:18).
+Unable to resolve symbol: length in this context
+
+Full report at:
+/tmp/clojure-494806055310772924.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array[5Pd clojure lojure -m array
+Syntax error compiling at (array.clj:41:11).
+Unable to resolve symbol: elt in this context
+
+Full report at:
+/tmp/clojure-8102316042824694427.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error compiling at (array.clj:51:3).
+Unable to resolve symbol: interactive in this context
+
+Full report at:
+/tmp/clojure-9738500648047170269.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error compiling at (array.clj:53:5).
+Unable to resolve symbol: anArray in this context
+
+Full report at:
+/tmp/clojure-11848400064021534364.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error reading source at (array.clj:60:1).
+EOF while reading, starting at line 50
+
+Full report at:
+/tmp/clojure-16825411683216404450.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Syntax error compiling at (array.clj:54:5).
+Unable to resolve symbol: anArray in this context
+
+Full report at:
+/tmp/clojure-15601933576643305927.edn
+]0;sp46@maroon34: ~/214/projects/06/clojure[01;32msp46@maroon34[00m:[01;34m~/214/projects/06/clojure[00m$ exit
+Script started on 2020-04-01 00:37:23-0400
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ cd src
+]0;sp46@gold09: ~/214/projects/06/clojure/src[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure/src[00m$ cat array.clj
+;; array.clj "test-drives" function readArray() and printArray().
+;;
+;; Output: the values inside the array, which the user defines.
+;;
+;; Usage: clojure -m array
+;;
+;; Begun by: Dr. Adams, CS 214 at Calvin College.
+;; Completed by: Sinai Park(sp46)
+;; Date: March 20 2020 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns array)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; readArray() asks the user for input size of arrays to fill in.       
+;; Receive: anArray, an empty Vector array type; size, Integer size of  array  
+;; Output: anArray is filled with the values from the user 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Replace this line with the definition of sum(); harder (recursive solution)
+(defn readArray [anArray count size]
+  (println "Value of array: ")
+      (if (< count size)  ; check to make sure count is less than size of the array
+
+        (let 
+          [element (int (read))  ; read in the input from the user
+          theArray (conj anArray element) ]  ; append element to anArray
+
+          (readArray theArray (+ count 1) size) ; recursively call readArray
+        ) anArray
+    
+    )
+    
+)
+  
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;s;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; printArray() prints out each element in the array to the user   
+;; Receive: anArray, a Vector array type with Floats in it already      
+;; Output: each element in anArray is printed for the user to see 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   
+(defn printArray [anArray count_num]
+  (if (vector? anArray)   ; check to make sure anArray is a vector
+    (if (< count_num (count anArray))    ; if count is less than the length of the array
+      (let []
+        (print (anArray count_num))     ; output the element in the array to the user
+        (println)
+        (printArray anArray (+ count_num 1)) ; call printArray recursively
+      )
+   ) 
+   (println "is not a vector")  
+  ) 
+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; main function to test functions readArray() and printArray()
+;; Output: the sum and average of some test vectors.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (print "Enter the size of the array: ") (flush); prompt the user for the size of the array
+  (let 
+    [ new_array []
+      size (int (read))
+      result (readArray new_array 0 size)     ; call functions readArray() and printArray()
+    ]
+  (do                
+    (printArray result 0))))
+]0;sp46@gold09: ~/214/projects/06/clojure/src[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure/src[00m$ cd -
+/home/sp46/214/projects/06/clojure
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ cd -at array.clj[7Pd srclojure -m array
+Enter the size of the array: 4
+Value of array: 
+7
+Value of array: 
+2
+Value of array: 
+4
+Value of array: 
+356
+Value of array: 
+7
+2
+4
+356
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m arrayd -[Klojure -m array
+0Enter the size of the array: 
+Value of array: 
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ clojure -m array
+Enter the size of the array: 4 2
+Value of array: 
+536872
+Value of array: 
+5362
+Value of array: 
+536872
+5362
+]0;sp46@gold09: ~/214/projects/06/clojure[01;32msp46@gold09[00m:[01;34m~/214/projects/06/clojure[00m$ exit
+
+Script done on 2020-04-01 00:38:05-0400
+Script started on 2020-03-19 14:00:33-0400
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat arrayb.rb     .rb    ay.rb
+# average.rb is a driver for method printarray() and readarray().
+#
+# Begun by: Dr. Adams, for CS 214 at Calvin College.
+# Completed by:: Sinai Park(sp46)
+# Date: March 18 2020
+########################################################
+
+###############################################
+# printArray() is a method that prints all the values in the array, with a new line
+# in an array of doubles.
+# Receive: anArray, an array of doubles, size, a user input value
+# Return: the list of the values in anArray.
+################################################
+
+def printArray(anArray, size)
+ puts "The values inside the array are: "
+ #resulting array values
+ for i in 0..size
+   puts anArray[i]
+ end
+end
+
+###############################################
+# readArray() is a method that fills the values inside the array with given input values
+# in an array.
+# Receive: anArray, an array of doubles, size, a user input value
+# Return: void, but complete anArray with filled-in values
+###############################################
+
+def readArray(anArray, size)
+   puts "Please enter #{size.to_i} values for the array: "
+
+   #For loop to put the user input into the array
+	for i in 0..size-1
+		element = gets.chomp.to_f
+		anArray[i] = element
+   end
+end 
+
+def main
+   # ask for the user input of the size of the array
+	print "\nEnter the size of the array: "
+	size = gets.chomp.to_f     #change into float
+
+	# make a new array with the size from the user
+	array = Array.new(size)
+
+	# Call the fuctionsreadArray() and printArray()
+	readArray(array, size)
+	printArray(array, size)
+end
+
+main]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ cat array.rb[Kcat array.rbscript script.java[8Pjava Arrayc -deprecation Array.java Array[Kc -deprecation Array.java Array[Kscript script.java[6Pcat array.rb[Kryb  uby array.rb
+
+Enter the size of the array: 4
+Please enter 4 values for the array: 
+562
+82
+2
+863
+The values inside the array are: 
+562.0
+82.0
+2.0
+863.0
+
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ ruby array.rb
+
+Enter the size of the array: 1
+Please enter 1 values for the array: 
+0
+The values inside the array are: 
+0.0
+
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ ruby array.rb0  b
+
+Enter the size of the array: 0
+Please enter 0 values for the array: 
+The values inside the array are: 
+
+]0;sp46@maroon28: ~/214/projects/06[01;32msp46@maroon28[00m:[01;34m~/214/projects/06[00m$ exit
+
+Script done on 2020-03-19 14:01:15-0400
