@@ -1,0 +1,26 @@
+Script started on 2020-04-01 03:27:29-0400
+]0;sp46@gold09: ~/214/labs/extraCredit[01;32msp46@gold09[00m:[01;34m~/214/labs/extraCredit[00m$ ((  clojure
+Clojure 1.10.1
+user=> ((fn [x y z] (+ w y     x y z)) 3 4 5)
+12
+user=> ((fn [x y z] (+ x y z)) 3 4 5)      100 100 800)
+1000
+user=> ((fn [x] (nil? x)) 452 0)
+false
+user=> ((fn [x] (nil? x)) 450)
+false
+user=> ((fn [x] (nil? x)) 450)    00001)
+false
+user=> ((fn [x] (nil? x)) 450)    0)
+false
+user=> ((fn [x] (nil? x)) 450)    )
+Execution error (ArityException) at user/eval160 (REPL:1).
+Wrong number of args (0) passed to: user/eval160/fn--161
+user=> ((fn [x] (nil? x)) 450)    nil)
+true
+user=> (f (fn [] 17.2))
+17.2
+user=> 
+]0;sp46@gold09: ~/214/labs/extraCredit[01;32msp46@gold09[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-04-01 03:31:49-0400

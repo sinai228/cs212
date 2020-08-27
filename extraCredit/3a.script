@@ -1,0 +1,13 @@
+Script started on 2020-03-26 21:43:34-0400
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (defn negate p [sequence] (map (fn p [x] (- x)) sequence))
+#'user/negate
+user=> (negate [-1 2 -3])
+(1 -2 3)
+user=> (negate [4 -5 6])
+(-4 5 -6)
+user=> 
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-26 21:44:30-0400

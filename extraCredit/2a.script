@@ -1,0 +1,17 @@
+Script started on 2020-03-25 20:46:14-0400
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (def squareSquare (fn [x] (* xx  x)))
+#'user/squareSquare
+user=> (sqau  uareSquare - 2)
+4
+user=> ^[[A    (squareSquare -2)
+4
+user=> (squareSquare 3)
+9
+user=> (d squareSquare -3)
+9
+user=> 
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-25 20:47:16-0400

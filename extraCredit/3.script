@@ -1,0 +1,61 @@
+Script started on 2020-03-25 20:47:48-0400
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (map inc [1 2 3 4 ])
+(2 3 4 5)
+user=> (map - [1 2 3 4  ])
+(-1 -2 -3 -4)
+user=> (map - [1 2 3 4 ]  ] [1 2 3 4])
+(0 0 0 0)
+user=> m 9 (map even? [1 2 3 4])
+(false true false true)
+user=> (map str[  ["a" "b" "c"] { []^[[D     "A' " "B" "C"])
+("aA" "bB" "cC")
+user=> (map count[[   [[11] [11 22] [11 2  2 33]])
+(1 2 3)
+user=> (map + [1 2 3 4] [1 2 3 4]_ )
+(2 4 6 8)
+user=> map(    (map * [1 2 3 4] [1[2[    2 3 4])
+(1 4 9 16)
+user=> (Mah th/abs -3)
+3
+user=> (map Math/avs  bs [-1 2 -3 4 -5])
+Syntax error compiling at (REPL:1:1).
+Unable to find static field: abs in class java.lang.Math
+user=> (map (fn [x] (f if (< x 0) (-x) x)) [0 -1 2 -3 4 -5) ])
+Syntax error compiling at (REPL:1:26).
+Unable to resolve symbol: -x in this context
+user=> ^[[A    ma  (map (fn [x] (if < x ) 0) ( x  =   - x) x)) [0 -1 2 -3 4 -5) ])
+#object[clojure.core$map$fn__5862 0xe4d2696 "clojure.core$map$fn__5862@e4d2696"]
+[-1 2 -3 4 -5]
+Syntax error reading source at (REPL:12:50).
+Unmatched delimiter: )
+user=> (map (fn [x] (if (, < x 0) (- x  ) x)) [-1 2 -3 4 -5])
+(1 2 3 4 5)
+user=> (defn substract  -b n [n sequence] (map (fn [x] (- x n)) sq eu quence))
+#'user/substract-n
+user=> (subtract  -n 2 [5 6 7 8])
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: subtract-n in this context
+user=> (defn subtract-n [n sequence] (map (fn [x] (  - x n)) sequence))
+#'user/subtract-n
+user=> (s subtractpn  -n 2 ' [5 6 6   7 8])
+(3 4 5 6)
+user=> (filter odd? [12 3 4      2 3 4])
+(1 3)
+user=> (filter even? [1 2 3 4])
+(2 4)
+user=> (filter neg? [1 2 3 4) ])
+()
+user=> (filter neg? [-1 1 = -2 3 2 -  3 3])
+(-1 -2 -3)
+user=> (filter pos? [-1 1 = -2 2 -3 3])
+(1 2 3)
+user=> (filter (fn [x] (and {pos? x) (ev^[[D^[[D^[[D^[[D^[[D^[[D^[[D                                            and (pos? x) (even? x))) [-1 1 -2 2 -3 3 -4 4])
+(2 4)
+user=> (filter (fn p [x] (and (neg? x)^[[D^[[D^[[D^[[D                             (or (neg? x) (odd? x))) [-1 1 -2 2 -3 3-4 4     -4 4])
+(-1 1 -2 -3 3 -4)
+user=> 
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-25 21:04:28-0400

@@ -1,0 +1,25 @@
+Script started on 2020-03-25 18:18:35-0400
+]0;sp46@gold32: ~/214/labs/extraCredit[01;32msp46@gold32[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (def triple (fn [x] (* x 3)))
+#'user/triple
+user=> I (triple 4)
+12
+user=> (defn triple [x] (x * x 3))
+#'user/triple
+user=> (#(* % 3) 4)
+12
+user=> #(+ (* 3 3) (  * 4 4))
+#object[user$eval146$fn__147 0x1eea9d2d "user$eval146$fn__147@1eea9d2d"]
+user=> ^[[A^[[A^[[B^[[B                #(+ (* %1 %1) (* %2 %2)))
+#object[user$eval154$fn__155 0x6d91790b "user$eval154$fn__155@6d91790b"]
+Syntax error reading source at (REPL:6:26).
+Unmatched delimiter: )
+user=> (def sum2Squares #(+ (* %1 %1) (* %2 %2)))
+#'user/sum2Squares
+user=> (sum2Squares 3 4)
+25
+user=> 
+]0;sp46@gold32: ~/214/labs/extraCredit[01;32msp46@gold32[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-25 18:32:09-0400

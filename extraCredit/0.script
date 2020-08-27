@@ -1,0 +1,9 @@
+Script started on 2020-03-05 10:18:27-0500
+]0;sp46@gold10: ~/214/labs/extraCredit[01;32msp46@gold10[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (_ + 1 2 3 4 5  )
+15
+user=> 
+]0;sp46@gold10: ~/214/labs/extraCredit[01;32msp46@gold10[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-05 10:18:55-0500

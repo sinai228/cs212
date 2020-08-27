@@ -1,0 +1,272 @@
+Name: Sinai Park (sp46)
+Date: April 1 2020
+Lecture: CS 214-A
+
+extra credit lab work
+
+
+Script started on 2020-03-05 10:18:27-0500
+]0;sp46@gold10: ~/214/labs/extraCredit[01;32msp46@gold10[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (_ + 1 2 3 4 5  )
+15
+user=> 
+]0;sp46@gold10: ~/214/labs/extraCredit[01;32msp46@gold10[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-05 10:18:55-0500
+Script started on 2020-03-05 10:23:18-0500
+]0;sp46@gold10: ~/214/labs/extraCredit[01;32msp46@gold10[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (fn [x] (+ x x))
+#object[user$eval136$fn__137 0x6d467c87 "user$eval136$fn__137@6d467c87"]
+user=> ((fn [x] (+ x x )) 21)
+42
+user=> ^[[A^[[B        ((fn [x y] (+ (* x x) (* y y))) 3 4)
+25
+user=> 
+]0;sp46@gold10: ~/214/labs/extraCredit[01;32msp46@gold10[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-05 10:24:02-0500
+Script started on 2020-04-01 03:27:29-0400
+]0;sp46@gold09: ~/214/labs/extraCredit[01;32msp46@gold09[00m:[01;34m~/214/labs/extraCredit[00m$ ((  clojure
+Clojure 1.10.1
+user=> ((fn [x y z] (+ w y     x y z)) 3 4 5)
+12
+user=> ((fn [x y z] (+ x y z)) 3 4 5)      100 100 800)
+1000
+user=> ((fn [x] (nil? x)) 452 0)
+false
+user=> ((fn [x] (nil? x)) 450)
+false
+user=> ((fn [x] (nil? x)) 450)    00001)
+false
+user=> ((fn [x] (nil? x)) 450)    0)
+false
+user=> ((fn [x] (nil? x)) 450)    )
+Execution error (ArityException) at user/eval160 (REPL:1).
+Wrong number of args (0) passed to: user/eval160/fn--161
+user=> ((fn [x] (nil? x)) 450)    nil)
+true
+user=> (f (fn [] 17.2))
+17.2
+user=> 
+]0;sp46@gold09: ~/214/labs/extraCredit[01;32msp46@gold09[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-04-01 03:31:49-0400
+Script started on 2020-03-25 18:18:35-0400
+]0;sp46@gold32: ~/214/labs/extraCredit[01;32msp46@gold32[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (def triple (fn [x] (* x 3)))
+#'user/triple
+user=> I (triple 4)
+12
+user=> (defn triple [x] (x * x 3))
+#'user/triple
+user=> (#(* % 3) 4)
+12
+user=> #(+ (* 3 3) (  * 4 4))
+#object[user$eval146$fn__147 0x1eea9d2d "user$eval146$fn__147@1eea9d2d"]
+user=> ^[[A^[[A^[[B^[[B                #(+ (* %1 %1) (* %2 %2)))
+#object[user$eval154$fn__155 0x6d91790b "user$eval154$fn__155@6d91790b"]
+Syntax error reading source at (REPL:6:26).
+Unmatched delimiter: )
+user=> (def sum2Squares #(+ (* %1 %1) (* %2 %2)))
+#'user/sum2Squares
+user=> (sum2Squares 3 4)
+25
+user=> 
+]0;sp46@gold32: ~/214/labs/extraCredit[01;32msp46@gold32[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-25 18:32:09-0400
+Script started on 2020-03-25 20:46:14-0400
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (def squareSquare (fn [x] (* xx  x)))
+#'user/squareSquare
+user=> (sqau  uareSquare - 2)
+4
+user=> ^[[A    (squareSquare -2)
+4
+user=> (squareSquare 3)
+9
+user=> (d squareSquare -3)
+9
+user=> 
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-25 20:47:16-0400
+Script started on 2020-03-25 20:47:48-0400
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (map inc [1 2 3 4 ])
+(2 3 4 5)
+user=> (map - [1 2 3 4  ])
+(-1 -2 -3 -4)
+user=> (map - [1 2 3 4 ]  ] [1 2 3 4])
+(0 0 0 0)
+user=> m 9 (map even? [1 2 3 4])
+(false true false true)
+user=> (map str[  ["a" "b" "c"] { []^[[D     "A' " "B" "C"])
+("aA" "bB" "cC")
+user=> (map count[[   [[11] [11 22] [11 2  2 33]])
+(1 2 3)
+user=> (map + [1 2 3 4] [1 2 3 4]_ )
+(2 4 6 8)
+user=> map(    (map * [1 2 3 4] [1[2[    2 3 4])
+(1 4 9 16)
+user=> (Mah th/abs -3)
+3
+user=> (map Math/avs  bs [-1 2 -3 4 -5])
+Syntax error compiling at (REPL:1:1).
+Unable to find static field: abs in class java.lang.Math
+user=> (map (fn [x] (f if (< x 0) (-x) x)) [0 -1 2 -3 4 -5) ])
+Syntax error compiling at (REPL:1:26).
+Unable to resolve symbol: -x in this context
+user=> ^[[A    ma  (map (fn [x] (if < x ) 0) ( x  =   - x) x)) [0 -1 2 -3 4 -5) ])
+#object[clojure.core$map$fn__5862 0xe4d2696 "clojure.core$map$fn__5862@e4d2696"]
+[-1 2 -3 4 -5]
+Syntax error reading source at (REPL:12:50).
+Unmatched delimiter: )
+user=> (map (fn [x] (if (, < x 0) (- x  ) x)) [-1 2 -3 4 -5])
+(1 2 3 4 5)
+user=> (defn substract  -b n [n sequence] (map (fn [x] (- x n)) sq eu quence))
+#'user/substract-n
+user=> (subtract  -n 2 [5 6 7 8])
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: subtract-n in this context
+user=> (defn subtract-n [n sequence] (map (fn [x] (  - x n)) sequence))
+#'user/subtract-n
+user=> (s subtractpn  -n 2 ' [5 6 6   7 8])
+(3 4 5 6)
+user=> (filter odd? [12 3 4      2 3 4])
+(1 3)
+user=> (filter even? [1 2 3 4])
+(2 4)
+user=> (filter neg? [1 2 3 4) ])
+()
+user=> (filter neg? [-1 1 = -2 3 2 -  3 3])
+(-1 -2 -3)
+user=> (filter pos? [-1 1 = -2 2 -3 3])
+(1 2 3)
+user=> (filter (fn [x] (and {pos? x) (ev^[[D^[[D^[[D^[[D^[[D^[[D^[[D                                            and (pos? x) (even? x))) [-1 1 -2 2 -3 3 -4 4])
+(2 4)
+user=> (filter (fn p [x] (and (neg? x)^[[D^[[D^[[D^[[D                             (or (neg? x) (odd? x))) [-1 1 -2 2 -3 3-4 4     -4 4])
+(-1 1 -2 -3 3 -4)
+user=> 
+]0;sp46@gold34: ~/214/labs/extraCredit[01;32msp46@gold34[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-25 21:04:28-0400
+Script started on 2020-03-26 21:43:34-0400
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (defn negate p [sequence] (map (fn p [x] (- x)) sequence))
+#'user/negate
+user=> (negate [-1 2 -3])
+(1 -2 3)
+user=> (negate [4 -5 6])
+(-4 5 -6)
+user=> 
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-26 21:44:30-0400
+Script started on 2020-03-26 21:47:02-0400
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (reduce Funcion    ction Opertional I                       e + [1 2 3 4 5])
+15
+user=> (reduce + 1)  [2 3 4 5])
+15
+user=> ) (reduce + a '(1     1 '(2 3 4 5  ))
+15
+user=> (reduce max 8 5 [4 3 2 1])
+5
+user=> (reduce bit-or [1 2 3 4])
+7
+user=> (reduce str ["a "  
+
+" "v b" "c"])
+"a\n\nbc"
+user=> (rec duce str ["a" "b" "c"])
+"abc"
+user=> (reduce + 1 2 3 [3 4 5])
+Execution error (ArityException) at user/eval15 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/reduce
+user=> (reduce + 1'  
+^H  '(2 3 4  ) 5)
+Execution error (ArityException) at user/eval17 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/reduce
+user=> (defn sx s  csv [seq] (redc uce e (fn [a b] (str a "," b)) seq))
+#'user/csv
+user=> (s csv [11 22 33])
+"11,22,33"
+user=> (defn totalItems [seqOfSeqs] ( 
+(reduce + (map count seqOfSeqs)))
+#'user/totalItems
+user=> (totalItems [["aa nn"    Ann"] ["Bob" "Chris"] ["dan   Dan" "eve   Eve' 
+" "f Fred"]])
+6
+user=> 
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-26 22:27:26-0400
+Script started on 2020-03-28 01:15:55-0400
+]0;sp46@gold01: ~/214/labs/extraCredit[01;32msp46@gold01[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (defn sumSquares [seq] (reduce + (map (fn [x] (* x x)) seq)))
+#'user/sumSquares
+user=> (sumSquares  '(   '(1 2 3))
+14
+user=> (sumSquares '(1 2 3 4 5))
+55
+user=> (sums Squares [-1 -2 3-  -3 0 1])
+15
+user=> 
+]0;sp46@gold01: ~/214/labs/extraCredit[01;32msp46@gold01[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-28 01:17:10-0400
+Script started on 2020-03-26 22:49:42-0400
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (defn incMaker [incValue]
+   (fn [x]
+     (+ x incValue)
+   )
+)
+#'user/incMaker
+user=> (def inc5 (incMaker 5))
+#'user/inc5
+user=> (inc5 6)
+11
+user=> (inc555    550)
+551
+user=> (defn greetingBuilder [greeting]
+   (fn [visitor]
+      (str greeting ", " visitor "!")
+   )
+)
+#'user/greetingBuilder
+user=> v (def csGreeting (greetingBuilder "Welcome to CS 214"))
+#'user/csGreeting
+user=> (def englishGreeting (greetingBuilder "Hello")
+
+Syntax error reading source at (REPL:17:1).
+EOF while reading, starting at line 15
+user=> (def frenchGreeting (greetingBuilder "Bonjour"))
+#'user/frenchGreeting
+user=> (def englishGreeting (greetingBuilder "Hello"))
+#'user/englishGreeting
+user=> (csGreeting "ann   Ann
+)
+
+Syntax error reading source at (REPL:22:1).
+EOF while reading string
+user=> (csGreeting "Ann")
+"Welcome to CS 214, Ann!"
+user=> (englishGreeting "Chris")
+"Hello, Chris!"
+user=> (frendchG    chGreeting "Chris")
+"Bonjour, Chris!"
+user=> 
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-26 22:53:30-0400

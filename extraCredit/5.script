@@ -1,0 +1,46 @@
+Script started on 2020-03-26 22:49:42-0400
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (defn incMaker [incValue]
+   (fn [x]
+     (+ x incValue)
+   )
+)
+#'user/incMaker
+user=> (def inc5 (incMaker 5))
+#'user/inc5
+user=> (inc5 6)
+11
+user=> (inc555    550)
+551
+user=> (defn greetingBuilder [greeting]
+   (fn [visitor]
+      (str greeting ", " visitor "!")
+   )
+)
+#'user/greetingBuilder
+user=> v (def csGreeting (greetingBuilder "Welcome to CS 214"))
+#'user/csGreeting
+user=> (def englishGreeting (greetingBuilder "Hello")
+
+Syntax error reading source at (REPL:17:1).
+EOF while reading, starting at line 15
+user=> (def frenchGreeting (greetingBuilder "Bonjour"))
+#'user/frenchGreeting
+user=> (def englishGreeting (greetingBuilder "Hello"))
+#'user/englishGreeting
+user=> (csGreeting "ann   Ann
+)
+
+Syntax error reading source at (REPL:22:1).
+EOF while reading string
+user=> (csGreeting "Ann")
+"Welcome to CS 214, Ann!"
+user=> (englishGreeting "Chris")
+"Hello, Chris!"
+user=> (frendchG    chGreeting "Chris")
+"Bonjour, Chris!"
+user=> 
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-26 22:53:30-0400

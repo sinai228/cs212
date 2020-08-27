@@ -1,0 +1,40 @@
+Script started on 2020-03-26 21:47:02-0400
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ clojure
+Clojure 1.10.1
+user=> (reduce Funcion    ction Opertional I                       e + [1 2 3 4 5])
+15
+user=> (reduce + 1)  [2 3 4 5])
+15
+user=> ) (reduce + a '(1     1 '(2 3 4 5  ))
+15
+user=> (reduce max 8 5 [4 3 2 1])
+5
+user=> (reduce bit-or [1 2 3 4])
+7
+user=> (reduce str ["a "  
+
+" "v b" "c"])
+"a\n\nbc"
+user=> (rec duce str ["a" "b" "c"])
+"abc"
+user=> (reduce + 1 2 3 [3 4 5])
+Execution error (ArityException) at user/eval15 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/reduce
+user=> (reduce + 1'  
+^H  '(2 3 4  ) 5)
+Execution error (ArityException) at user/eval17 (REPL:1).
+Wrong number of args (4) passed to: clojure.core/reduce
+user=> (defn sx s  csv [seq] (redc uce e (fn [a b] (str a "," b)) seq))
+#'user/csv
+user=> (s csv [11 22 33])
+"11,22,33"
+user=> (defn totalItems [seqOfSeqs] ( 
+(reduce + (map count seqOfSeqs)))
+#'user/totalItems
+user=> (totalItems [["aa nn"    Ann"] ["Bob" "Chris"] ["dan   Dan" "eve   Eve' 
+" "f Fred"]])
+6
+user=> 
+]0;sp46@gold33: ~/214/labs/extraCredit[01;32msp46@gold33[00m:[01;34m~/214/labs/extraCredit[00m$ exit
+
+Script done on 2020-03-26 22:27:26-0400
