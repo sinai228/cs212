@@ -1,0 +1,85 @@
+Script started on 2020-03-06 14:45:43-0500
+]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ c cd src
+]0;sp46@maroon21: ~/214/labs/05/clojure/src[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure/src[00m$ cat sp;l   lit.     split.clj
+;;;; split.clj splits a string into two substrings.
+;;;;
+;;;; Input: aString, the string to be split,
+;;;;        pos, the index where aString is to be split.
+;;;; Output: the substring of aString before pos, and
+;;;;         the substring of aString from pos onwards.
+;;;;
+;;;; Usage: clojure -m split
+;;;;
+;;;; Begun by: Dr. Adams, for CS 214 at Calvin College.
+;;;; Completed by: Sinai Park(sp46)
+;;;; Date: March 6 2020
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(ns split)      ; name the program
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; split() splits a string into its two substrings.  
+;;; Receive: aString, the string to be split,         
+;;;          splitPos, the index where aString should be split.
+;;; PRE: 0 <= splitPos < the length of aString.
+;;; Return: the substring of aString before pos, and  
+;;;         the substring of aString from pos onwards.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Replace this line with the definition of split()
+(defn split [aString, splitPos]
+  (let 
+    [ first_string (subs aString 0 splitPos)
+      second_string (subs aString splitPos )]
+    (vector first_string second_string)      ;;will return this because its the last one in the function
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; main function
+;;; Input: the string to be split,
+;;;        the index where it should be split.
+;;; Output: the two split parts of the string.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defn -main []
+  (print "To split a string, enter the string: ") (flush)
+  (let
+    [ aString (read-line) ]                      ; read the string
+    (print "Enter the split position: ") (flush)
+    (let 
+      [ pos (read)                               ; read the split pos.
+        result (split aString pos)               ; split the string
+        part1 (get result 0)                     ; retrieve the two
+        part2 (get result 1)                     ;  parts
+      ]
+                                                 ; display the parts
+      (printf (str "\nThe first part is \"%s\" and" 
+                    " the second part is \"%s\"\n\n")
+                       part1 part2)
+    )
+  )
+)
+
+]0;sp46@maroon21: ~/214/labs/05/clojure/src[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure/src[00m$ cd -
+/home/sp46/214/labs/05/clojure
+]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ cd -at split.clj[7Pd srclojure -m split
+To split a string, enter the string: hello 
+Enter the split position: - 0
+
+The first part is "" and the second part is "hello "
+
+]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ clojure -m split
+To split a string, enter the string: hello
+Enter the split position: 3
+
+The first part is "hel" and the second part is "lo"
+
+]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ clojure -m split
+To split a string, enter the string: hello
+Enter the split position: 5
+
+The first part is "hello" and the second part is ""
+
+]0;sp46@maroon21: ~/214/labs/05/clojure[01;32msp46@maroon21[00m:[01;34m~/214/labs/05/clojure[00m$ exit
+
+Script done on 2020-03-06 14:46:13-0500

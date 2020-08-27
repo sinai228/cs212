@@ -1,0 +1,157 @@
+Written by: Sinai Park(sp46)
+Date: Feb 11 2020
+
+./example1
+The main loop beginning near line 695 (at line 689)
+The loop looks at the pointer array of *yy_cp = (yy_hold_char), and what character the yy is holding
+
+The loops near lines 740-770 allow the nine different cases for set ups when the user input
+differs accordingly inside the file. It seems to follow such YY_RULE_SETUP from different lex files.
+
+
+./example2
+R2D2
+WORD
+
+I
+WORD
+
+hello
+WORD
+
+2
+NUMBER
+
+-51
+-NUMBER
+
+10
+NUMBER
+
+*
+*
+
+2adfg
+NUMBER
+WORD
+
+fag2
+WORD
+_
+_
+When an underscore is input, the tokenizer outputs the same input value.
+This happens because there is no spcifications on the special symbols, 
+only numbers and words. The buffer does not work in this case. 
+
+%{
+#include <stdio.h>
+%}
+
+%%
+[0123456789]+           printf("NUMBER\n");
+[_]*[a-zA-Z][a-zA-Z0-9]*    printf("WORD\n");
+%%
+
+input test values:
+_fa
+WORD
+
+_dasfa
+WORD
+
+___fa
+WORD
+
+faj
+WORD
+
+./example3
+
+sp46@gold11:~/214/labs/02$ ./example3 < StudentInfo.h
+KEYWORD: class
+IDENTIFIER: StudentInfo
+PUNCTUATION: {
+KEYWORD: public
+PUNCTUATION: :
+IDENTIFIER: StudentInfo
+PUNCTUATION: (
+PUNCTUATION: )
+PUNCTUATION: {
+IDENTIFIER: myGPA
+OPERATOR: =
+DOUBLE: 0.0 (0)
+PUNCTUATION: ;
+IDENTIFIER: myHours
+OPERATOR: =
+INTEGER: 0 (0)
+PUNCTUATION: ;
+PUNCTUATION: }
+IDENTIFIER: StudentInfo
+PUNCTUATION: (
+KEYWORD: double
+IDENTIFIER: gpa
+PUNCTUATION: ,
+KEYWORD: int
+IDENTIFIER: hours
+PUNCTUATION: )
+PUNCTUATION: {
+IDENTIFIER: myGPA
+OPERATOR: =
+IDENTIFIER: gpa
+PUNCTUATION: ;
+IDENTIFIER: myHours
+OPERATOR: =
+IDENTIFIER: hours
+PUNCTUATION: ;
+PUNCTUATION: }
+KEYWORD: private
+PUNCTUATION: :
+KEYWORD: double
+IDENTIFIER: myGPA
+PUNCTUATION: ;
+KEYWORD: int
+IDENTIFIER: myHours
+PUNCTUATION: ;
+PUNCTUATION: }
+PUNCTUATION: ;
+
+
+./example4
+
+No, I don't see anything strange
+
+What differentiates a terminal from a non-terminal? 
+A non-terminal is a open-ended part that needs to be identified and terminated with terminals.
+All terminals come out as valid syntax.
+
+./example5
+
+heat on
+	Heat turned on
+heat off
+	Heat turned off
+set temperature 3
+	Temperature set to 3
+set temperature -3
+-	Temperature set to 3
+set temperature --26
+--	Temperature set to 26
+set temperature 0
+	Temperature set to 0
+heat off
+	Heat turned off
+
+
+./example6
+
+heat on
+	Heat turned on
+set temperature 9
+	Temperature set to 9
+set humidity 48  
+	Humidity set to 48
+set humidity -3
+-	Humidity set to 3
+heat off
+	Heat turned off
+
